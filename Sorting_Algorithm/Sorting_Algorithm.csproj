@@ -148,6 +148,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Code\Geschlecht.cs" />
+    <Compile Include="Code\Group.cs" />
+    <Compile Include="Code\Member.cs" />
     <Compile Include="Code\Sorter.cs" />
     <Compile Include="Code\Studiengang.cs" />
     <Compile Include="Controllers\DataOutputController.cs" />

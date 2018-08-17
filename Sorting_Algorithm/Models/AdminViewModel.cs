@@ -7,5 +7,6 @@ namespace Sorting_Algorithm.Models
 {
     public class AdminViewModel
     {
+
     }
 }

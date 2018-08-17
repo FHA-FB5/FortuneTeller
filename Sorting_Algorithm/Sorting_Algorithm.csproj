@@ -150,6 +150,7 @@
     <Compile Include="Code\Geschlecht.cs" />
     <Compile Include="Code\Sorter.cs" />
     <Compile Include="Code\Studiengang.cs" />
+    <Compile Include="Controllers\DataOutputController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -198,6 +199,8 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\DataInputView.cshtml" />
+    <Content Include="Views\Home\AdminViewView.cshtml" />
+    <Content Include="Views\DataOutput\DataOutputView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

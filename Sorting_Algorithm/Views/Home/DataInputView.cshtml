@@ -1,5 +1,6 @@
 ﻿@model Sorting_Algorithm.Models.DataInputModel
 @using Sorting_Algorithm.Models;
+@using Sorting_Algorithm.Code;
 
 @{
     ViewBag.Title = "DataInputView";
@@ -7,21 +8,18 @@
 }
 
 <h2>DataInputView</h2>
-@using (Html.BeginForm("SubmitData","Home",FormMethod.Post))
+
+@using (Html.BeginForm("SubmitData", "Home", FormMethod.Post))
 {
-    @Html.TextBoxFor(n=>n.Name, new { @placeholder = "Enter Name" })
-    <input type="text" name="Alter" />
-    <select name="Geschlecht">
-        <option value="1">Männlich</option>
-        <option value="2">Weiblich</option>
-    </select>
-    <select name="Studiengang">
-        <option value="1">MCD</option>
-        <option value="2">Informatik</option>
-        <option value="3">Elektrotechnik</option>
-        <option value="4">Wirtschaftsinformatik</option>
-    </select>
+<t>
+    @Html.TextBoxFor(n => n.Name, new { @placeholder = "Enter Name" })
+    @Html.TextBoxFor(n => n.Alter, new { @placeholder = "Enter Age" })
+    @Html.EnumDropDownListFor(n => n.Geschlecht, "Select Geschlecht", new { @class = "form-control" })
+    @Html.EnumDropDownListFor(n => n.Studiengang, "Select Studiengang", new { @class = "form-control" })
     <input type="submit" formaction="SubmitData" value="Anmelden" />
+    <li>@Html.ActionLink("DataOutput", "DataOutputView", "DataOutput")</li>
+</t>
+
 }
 
 

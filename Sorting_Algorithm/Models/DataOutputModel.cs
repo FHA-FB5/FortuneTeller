@@ -7,5 +7,11 @@ namespace Sorting_Algorithm.Models
 {
     public class DataOutputModel
     {
+        public string GruppenName { get; set; }
+
+        public DataOutputModel()
+        {
+
+        }
     }
 }

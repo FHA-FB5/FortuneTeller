@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Sorting_Algorithm.Models;
 
 namespace Sorting_Algorithm.Controllers
 {
@@ -24,6 +25,20 @@ namespace Sorting_Algorithm.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult DataInputView()
+        {
+            ViewBag.Message = "DataInput";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SubmitData(DataInputModel model)
+        {
+            
             return View();
         }
     }

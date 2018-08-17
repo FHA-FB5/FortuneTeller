@@ -1,0 +1,6 @@
+Dennis;23;m;inf
+Max;22;m;inf
+Peter;25;m;MCD
+Vanessa;28;w;winf
+Kai;32;m;etech
+Claudia;21;w;inf

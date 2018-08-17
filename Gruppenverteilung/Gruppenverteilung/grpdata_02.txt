@@ -1,0 +1,6 @@
+Timo;23;m;winf
+Max;25;m;inf
+Peter;30;m;MCD
+Vanessa;18;w;winf
+Kai;25;m;etech
+Claudia;21;w;inf

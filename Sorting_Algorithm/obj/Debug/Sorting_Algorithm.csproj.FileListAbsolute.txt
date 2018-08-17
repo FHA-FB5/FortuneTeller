@@ -193,7 +193,6 @@ C:\Workspace\GitHub_Repsitories\Gruppeneinteilung\Sorting_Algorithm\obj\Debug\So
 C:\Workspace\GitHub_Repsitories\Gruppeneinteilung\Sorting_Algorithm\obj\Debug\Sorting_Algorithm.csproj.CopyComplete
 C:\Workspace\GitHub_Repsitories\Gruppeneinteilung\Sorting_Algorithm\obj\Debug\Sorting_Algorithm.dll
 C:\Workspace\GitHub_Repsitories\Gruppeneinteilung\Sorting_Algorithm\obj\Debug\Sorting_Algorithm.pdb
-C:\Workspace\GitHub_Repsitories\Gruppeneinteilung\Sorting_Algorithm\obj\Debug\Sorting_Algorithm.csprojAssemblyReference.cache
 C:\Users\Denni\Documents\GitHub\Gruppeneinteilung\Sorting_Algorithm\bin\ApplicationInsights.config
 C:\Users\Denni\Documents\GitHub\Gruppeneinteilung\Sorting_Algorithm\bin\Sorting_Algorithm.dll.config
 C:\Users\Denni\Documents\GitHub\Gruppeneinteilung\Sorting_Algorithm\bin\Sorting_Algorithm.dll

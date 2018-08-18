@@ -8,6 +8,7 @@ using Gruppenverteilung.Models;
 using Gruppenverteilung.Code;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
+using Gruppenverteilung.Code;
 
 namespace Gruppenverteilung.Controllers
 {
@@ -24,32 +25,12 @@ namespace Gruppenverteilung.Controllers
         }
 
         [HttpPost]
-        public ActionResult SubmitData(DataInputModel model)
+        public IActionResult SubmitData(DataInputModel model)
         {
-            DataOutputModel dataOutputModel = new DataOutputModel();           
+            DataOutputModel dataOutputModel = new DataOutputModel();
 
-            //Testing
-            Group g1 = new Group();
-            g1.Name = "GRP1";
-            g1.AddMember("grpdata_01.txt");
-            Group g2 = new Group();
-            g2.AddMember("grpdata_02.txt");
-            g2.Name = "GRP2";
-            Member member = new Member(model.Name, model.Alter, model.Studiengang, model.Geschlecht);
-            double sg1 = g1.CalculateScore(member);
-            double sg2 = g2.CalculateScore(member);
-            if (sg1 < sg2)
-            {
-                g1.AddMember(member);
-                dataOutputModel.GruppenName = g1.Name;
-            }
-            else
-            {
-                g2.AddMember(member);
-                dataOutputModel.GruppenName = g2.Name;
-            }
-            //
-            
+            Group BestGroup = GlobalVariables.sorter.FindBestGroup(new Member(model.Name, model.Alter, model.Studiengang, model.Geschlecht));
+            dataOutputModel.GruppenName = BestGroup.Name;
             ///Rückgabe der view mit passendem Model.
             return View("../DataOutput/DataOutputView", dataOutputModel);
         }

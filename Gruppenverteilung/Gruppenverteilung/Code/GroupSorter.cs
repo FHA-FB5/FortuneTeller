@@ -32,14 +32,28 @@ namespace Gruppenverteilung.Code
             Group BestGroup = FindNextEmptyGroup();
             if (BestGroup == null)
             {
-                double WorstMemberCourseRateInGroup = 1.1;
+                double WorstMemberCourseRateInGroup = groups[0].CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
                 foreach (Group group in groups)
                 {
-                    double GroupRate = group.CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
-                    if ((GroupRate - 0.25) <= (WorstMemberCourseRateInGroup - 0.25))
+                    double GroupCourseRate = group.CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
+                    if (GroupCourseRate == WorstMemberCourseRateInGroup)
                     {
-                        WorstMemberCourseRateInGroup = group.CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
+                        // if BestGroup has more member than group
+                        if (BestGroup != null && BestGroup.MemberList.Count > group.MemberList.Count)
+                        {
+                            BestGroup = group;
+                            WorstMemberCourseRateInGroup = group.CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
+                        }
+                        else if (BestGroup == null)
+                        {
+                            BestGroup = group;
+                            WorstMemberCourseRateInGroup = group.CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
+                        }                       
+                    }
+                    else if (GroupCourseRate < WorstMemberCourseRateInGroup)
+                    {
                         BestGroup = group;
+                        WorstMemberCourseRateInGroup = group.CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
                     }
                 }
             }

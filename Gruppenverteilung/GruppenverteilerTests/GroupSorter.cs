@@ -157,6 +157,11 @@ namespace GruppenverteilerTests
             Group grp9 = sorter.FindBestGroup(InfMember);
             Group grp10 = sorter.FindBestGroup(MCDMember);
             Group grp11 = sorter.FindBestGroup(MCDMember);
+            Group grp12 = sorter.FindBestGroup(EtechMember);
+            Group grp13 = sorter.FindBestGroup(EtechMember);
+            Group grp14 = sorter.FindBestGroup(MCDMember);
+            Group grp15 = sorter.FindBestGroup(WinfMember);
+            Group grp16 = sorter.FindBestGroup(InfMember);
 
             //assert
             Assert.AreEqual(grp1.Name, "grp1");
@@ -169,7 +174,12 @@ namespace GruppenverteilerTests
             Assert.AreEqual(grp8.Name, "grp4");
             Assert.AreEqual(grp9.Name, "grp2");
             Assert.AreEqual(grp10.Name, "grp1");
-            Assert.AreEqual(grp11.Name, "grp2");
+            Assert.AreEqual(grp11.Name, "grp5");
+            Assert.AreEqual(grp12.Name, "grp1");
+            Assert.AreEqual(grp13.Name, "grp4");
+            Assert.AreEqual(grp14.Name, "grp3");
+            Assert.AreEqual(grp15.Name, "grp5");
+            Assert.AreEqual(grp16.Name, "grp1");
         }
     }
 }

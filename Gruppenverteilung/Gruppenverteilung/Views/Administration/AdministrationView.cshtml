@@ -8,3 +8,38 @@
 
 <h2>AdministrationView</h2>
 
+<div class="row">
+    <form asp-controller="Administration" asp-action="ShowGroups" method="post" class="col-lg-4">
+        
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">Gruppen</a></li>
+                <li><a href="#">Daten einlesen</a></li>
+                <li><a href="#">Editieren</a></li>
+            </ul>
+        </div>
+       
+
+        <div class="row">
+           @foreach (Group g in Model.groups)
+            {
+                <div class="col-lg-4">
+                <label>@g.Name</label>
+                @foreach (Member m in g.MemberList)
+                {
+                    <p>@m.Name</p>
+                }
+                </div>
+            }
+        </div>
+
+        <div class="row">
+            <input class="btn btn-primary" type="submit" formaction="RefreshGroups" value="Refresh Groups" />
+        </div>
+
+    </form>
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

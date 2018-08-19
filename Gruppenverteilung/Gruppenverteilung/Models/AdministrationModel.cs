@@ -10,6 +10,15 @@ namespace Gruppenverteilung.Models
     {
         public List<Gruppenverteilung.Code.Group> groups;
 
+        public AdministrationModel()
+        {
+            RefreshGroups();
+        }
 
+        public void RefreshGroups()
+        {
+            groups = GlobalVariables.sorter.groups;
+        }
+        
     }
 }

@@ -25,5 +25,13 @@ namespace Gruppenverteilung.Controllers
             model.groups = GlobalVariables.sorter.groups;
             return View("../Administration/AdministrationView", model);
         }
+
+        public IActionResult SimulateGroups(AdministrationModel model)
+        {
+            GlobalVariables.sorter.SimulateByFile("grpdata_01.txt");
+            model.groups = GlobalVariables.sorter.groups;
+
+            return View("../Administration/AdministrationView", model);
+        }
     }
 }

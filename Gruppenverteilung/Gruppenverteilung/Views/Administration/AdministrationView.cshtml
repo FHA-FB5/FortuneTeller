@@ -9,7 +9,7 @@
 <h2>AdministrationView</h2>
 
 <div class="row">
-    <form asp-controller="Administration" asp-action="ShowGroups" method="post" class="col-lg-4">
+    <form asp-controller="Administration" asp-action="ShowGroups" method="post" class="col-lg-12">
         
         <div class="row">
             <ul class="nav nav-tabs">
@@ -23,11 +23,18 @@
         <div class="row">
            @foreach (Group g in Model.groups)
             {
-                <div class="col-lg-4">
+                <div class="col-lg-2">
                 <label>@g.Name</label>
                 @foreach (Member m in g.MemberList)
                 {
-                    <p>@m.Name</p>
+                    <p>@m.Name, @m.Studiengang.ToString()</p>
+                }
+
+                <hr />
+                <label>Gruppen Stats:</label>
+                @foreach (KeyValuePair<Studiengang, double> kvp in g.CourseRates)
+                {
+                    <p>@kvp.Key: ~@Math.Round(kvp.Value * 100, 2)%</p>
                 }
                 </div>
             }
@@ -35,6 +42,7 @@
 
         <div class="row">
             <input class="btn btn-primary" type="submit" formaction="RefreshGroups" value="Refresh Groups" />
+            <input class="btn btn-primary" type="submit" formaction="SimulateGroups" value="Simulate" />
         </div>
 
     </form>

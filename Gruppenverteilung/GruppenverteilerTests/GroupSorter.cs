@@ -181,5 +181,26 @@ namespace GruppenverteilerTests
             Assert.AreEqual(grp15.Name, "grp5");
             Assert.AreEqual(grp16.Name, "grp1");
         }
+        [TestMethod]
+        public void SimulateBestGroupTest()
+        {
+            // arrange
+            List<Group> groups = new List<Group>();
+            groups.Add(new Group("grp1"));
+            groups.Add(new Group("grp2"));
+            groups.Add(new Group("grp3"));
+            groups.Add(new Group("grp4"));
+            groups.Add(new Group("grp5"));
+            groups.Add(new Group("grp6"));
+
+            Gruppenverteilung.Code.GroupSorter sorter = new Gruppenverteilung.Code.GroupSorter();
+            sorter.groups = groups;
+
+            //act
+            sorter.SimulateByFile("../grpdata_01.txt");
+
+            //assert
+            Assert.IsTrue(true);
+        }
     }
 }

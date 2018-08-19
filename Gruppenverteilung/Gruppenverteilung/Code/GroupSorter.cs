@@ -57,6 +57,8 @@ namespace Gruppenverteilung.Code
                     }
                 }
             }
+
+            ///TODO Eventuell von ausßerhalb, da die methode FINDE beste gruppe heißt. (oder umbennen zu HINZUFÜGEN zu beste gruppe).
             BestGroup.AddMember(member);
 
             return BestGroup;
@@ -84,6 +86,35 @@ namespace Gruppenverteilung.Code
             }
 
             return null;
+        }
+
+        public void SimulateByFile(string path)
+        {
+            string line;
+            System.IO.StreamReader sr = new System.IO.StreamReader(path);
+            while ((line = sr.ReadLine()) != null)
+            {
+                string[] splittedLine = line.Split(';');
+                Studiengang stdgang = Studiengang.Informatik;
+                if (splittedLine[3] == "inf")
+                    stdgang = Studiengang.Informatik;
+                else if (splittedLine[3] == "winf")
+                    stdgang = Studiengang.Wirtschaftsinformatik;
+                else if (splittedLine[3] == "MCD")
+                    stdgang = Studiengang.MCD;
+                else if (splittedLine[3] == "etech")
+                    stdgang = Studiengang.Elektrotechnik;
+
+                Geschlecht gender = Geschlecht.Maennlich;
+                if (splittedLine[2] == "m")
+                    gender = Geschlecht.Maennlich;
+                else if (splittedLine[2] == "w")
+                    gender = Geschlecht.Weiblich;
+
+                Member member = new Member(splittedLine[0], Convert.ToInt16(splittedLine[1]), stdgang, gender);
+                FindBestGroup(member);
+            }
+
         }
     }
 }

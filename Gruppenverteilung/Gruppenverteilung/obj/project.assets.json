@@ -12218,23 +12218,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Denni\\.nuget\\packages\\": {},
+    "C:\\Users\\maxco\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Denni\\Documents\\GitHub\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj",
+      "projectUniqueName": "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj",
       "projectName": "Gruppenverteilung",
-      "projectPath": "C:\\Users\\Denni\\Documents\\GitHub\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj",
-      "packagesPath": "C:\\Users\\Denni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Denni\\Documents\\GitHub\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\obj\\",
+      "projectPath": "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj",
+      "packagesPath": "C:\\Users\\maxco\\.nuget\\packages\\",
+      "outputPath": "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Denni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\maxco\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

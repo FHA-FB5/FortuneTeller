@@ -8063,23 +8063,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Denni\\.nuget\\packages\\": {},
+    "C:\\Users\\maxco\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Denni\\Documents\\GitHub\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\GruppenverteilerTests.csproj",
+      "projectUniqueName": "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\GruppenverteilerTests.csproj",
       "projectName": "GruppenverteilerTests",
-      "projectPath": "C:\\Users\\Denni\\Documents\\GitHub\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\GruppenverteilerTests.csproj",
-      "packagesPath": "C:\\Users\\Denni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Denni\\Documents\\GitHub\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\obj\\",
+      "projectPath": "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\GruppenverteilerTests.csproj",
+      "packagesPath": "C:\\Users\\maxco\\.nuget\\packages\\",
+      "outputPath": "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Denni\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\maxco\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8092,8 +8092,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Users\\Denni\\Documents\\GitHub\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj": {
-              "projectPath": "C:\\Users\\Denni\\Documents\\GitHub\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj"
+            "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj": {
+              "projectPath": "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj"
             }
           }
         }

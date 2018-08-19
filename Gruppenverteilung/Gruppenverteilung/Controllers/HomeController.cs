@@ -24,6 +24,11 @@ namespace Gruppenverteilung.Controllers
             return View();
         }
 
+        public IActionResult AdministrationView(AdministrationModel model)
+        {
+            return View();
+        }
+
         [HttpPost]
         public IActionResult SubmitData(DataInputModel model)
         {

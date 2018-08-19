@@ -32,18 +32,17 @@ namespace Gruppenverteilung.Code
             Group BestGroup = FindNextEmptyGroup();
             if (BestGroup == null)
             {
-                double WorstMemberCourseRateInGroup = 1;
+                double WorstMemberCourseRateInGroup = 1.1;
                 foreach (Group group in groups)
                 {
                     double GroupRate = group.CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
-                    if ((GroupRate - 0.25) < (WorstMemberCourseRateInGroup - 0.25))
+                    if ((GroupRate - 0.25) <= (WorstMemberCourseRateInGroup - 0.25))
                     {
                         WorstMemberCourseRateInGroup = group.CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
                         BestGroup = group;
                     }
                 }
             }
-
             BestGroup.AddMember(member);
 
             return BestGroup;

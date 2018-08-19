@@ -31,6 +31,7 @@ namespace Gruppenverteilung.Controllers
 
             Group BestGroup = GlobalVariables.sorter.FindBestGroup(new Member(model.Name, model.Alter, model.Studiengang, model.Geschlecht));
             dataOutputModel.GruppenName = BestGroup.Name;
+
             ///Rückgabe der view mit passendem Model.
             return View("../DataOutput/DataOutputView", dataOutputModel);
         }

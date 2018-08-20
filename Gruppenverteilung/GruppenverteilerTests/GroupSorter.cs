@@ -10,56 +10,6 @@ namespace GruppenverteilerTests
     public class GroupSorter
     {
         [TestMethod]
-        public void MemberSortingTest()
-        {
-            // arrange
-            List<Group> groups = new List<Group>();
-            groups.Add(new Group("grp1"));
-            groups.Add(new Group("grp2"));
-            groups.Add(new Group("grp3"));
-            groups.Add(new Group("grp4"));
-            groups.Add(new Group("grp5"));
-
-            Member member1 = new Member("Test1", 25, Studiengang.Informatik, Geschlecht.Maennlich);
-            Member member2 = new Member("Test2", 25, Studiengang.Wirtschaftsinformatik, Geschlecht.Maennlich);
-            Member member3 = new Member("Test3", 25, Studiengang.Elektrotechnik, Geschlecht.Maennlich);
-            Member member4 = new Member("Test4", 25, Studiengang.MCD, Geschlecht.Maennlich);
-            Member member5 = new Member("Test5", 25, Studiengang.Informatik, Geschlecht.Maennlich);
-            Member member6 = new Member("Test6", 25, Studiengang.Informatik, Geschlecht.Maennlich);
-            Member member7 = new Member("Test7", 25, Studiengang.Informatik, Geschlecht.Maennlich);
-            Member member8 = new Member("Test8", 25, Studiengang.Informatik, Geschlecht.Maennlich);
-            Member member9 = new Member("Test9", 25, Studiengang.Informatik, Geschlecht.Maennlich);
-
-
-            List<double> scores = new List<double>();
-            scores.Add(100);
-            scores.Add(100);
-            scores.Add(100);
-            scores.Add(100);
-            scores.Add(100);
-
-            Gruppenverteilung.Code.GroupSorter sorter = new Gruppenverteilung.Code.GroupSorter();
-            sorter.groups = groups;
-            sorter.groupscores = scores;
-            // act
-            Group grp1 = sorter.SortMemberIntoGroup(member1);
-            Group grp2 = sorter.SortMemberIntoGroup(member2);
-            Group grp3 = sorter.SortMemberIntoGroup(member3);
-            Group grp4 = sorter.SortMemberIntoGroup(member4);
-            Group grp5 = sorter.SortMemberIntoGroup(member5);
-            Group grp6 = sorter.SortMemberIntoGroup(member6);
-            Group grp7 = sorter.SortMemberIntoGroup(member7);
-
-            // assert
-            Assert.AreEqual(grp1.Name, "grp1");
-            Assert.AreEqual(grp2.Name, "grp2");
-            Assert.AreEqual(grp3.Name, "grp3");
-            Assert.AreEqual(grp4.Name, "grp4");
-            Assert.AreEqual(grp5.Name, "grp5");
-            //Assert.AreEqual(grp6.Name, "grp1");
-        }
-
-        [TestMethod]
         public void CourseRateUpdateTest()
         {
             // arrange
@@ -181,6 +131,7 @@ namespace GruppenverteilerTests
             Assert.AreEqual(grp15.Name, "grp5");
             Assert.AreEqual(grp16.Name, "grp1");
         }
+
         [TestMethod]
         public void SimulateBestGroupTest()
         {

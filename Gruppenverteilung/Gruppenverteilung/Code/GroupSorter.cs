@@ -38,7 +38,6 @@ namespace Gruppenverteilung.Code
                     double GroupCourseRate = group.CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
                     if (GroupCourseRate == WorstMemberCourseRateInGroup)
                     {
-                        // if BestGroup has more member than group
                         if (BestGroup != null && BestGroup.MemberList.Count > group.MemberList.Count)
                         {
                             BestGroup = group;
@@ -62,19 +61,6 @@ namespace Gruppenverteilung.Code
             BestGroup.AddMember(member);
 
             return BestGroup;
-        }
-
-        public Group SortMemberIntoGroup(Member member)
-        {
-            ///First fill emptygroups with at least on member
-            Group g = FindNextEmptyGroup();
-            ///If all groups have at least one member calculate best group
-            if (g == null)
-            {
-                g = FindBestGroup(member);
-            }
-            g.AddMember(member);
-            return g;
         }
 
         private Group FindNextEmptyGroup()

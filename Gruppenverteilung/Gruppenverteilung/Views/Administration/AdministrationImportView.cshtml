@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewData["Title"] = "AdministrationImportView";
+}
+
+
+<h2>Daten einlesen</h2>
+
+<div class="row">
+    <ul class="nav nav-tabs">
+        <li><a asp-area="" asp-controller="Administration" asp-action="AdministrationView">Übersicht</a></li>
+        <li class="active"><a>Daten einlesen</a></li>
+        <li><a asp-area="" asp-controller="Administration" asp-action="AdministrationEditView">Zuweisen</a></li>
+    </ul>
+</div>
+
+<div class="row">
+    <h3>Gruppen einlesen: </h3>
+    <input type="file" accept="image/*">
+</div>
+
+<div class="row">
+    <p>Anzahl Gruppen: </p>
+    <p>Zuletzt eingelesen: </p>
+</div>
+
+<div class="row">
+    <h3>Tutoren einlesen: </h3>
+    <input type="file" accept="image/*">
+</div>
+
+<div class="row">
+    <p>Anzahl Tutoren: </p>
+    <p>Zuletzt eingelesen: </p>
+</div>
+
+
+

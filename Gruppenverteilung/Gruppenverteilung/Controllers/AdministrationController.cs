@@ -15,6 +15,16 @@ namespace Gruppenverteilung.Controllers
             return View(model);
         }
 
+        public IActionResult AdministrationImportView()
+        {
+            return View();
+        }
+
+        public IActionResult AdministrationEditView()
+        {
+            return View();
+        }
+
         public IActionResult ShowGroups(AdministrationModel model)
         {
             return View();
@@ -24,6 +34,8 @@ namespace Gruppenverteilung.Controllers
         {
             model.groups = GlobalVariables.sorter.groups;
             return View("../Administration/AdministrationView", model);
+
+
         }
 
         public IActionResult SimulateGroups(AdministrationModel model)

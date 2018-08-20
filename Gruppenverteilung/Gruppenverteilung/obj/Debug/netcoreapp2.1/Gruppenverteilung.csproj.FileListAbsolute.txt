@@ -62,3 +62,5 @@ C:\Workspace\GitHub_Repsitories\Gruppeneinteilung\Gruppenverteilung\Gruppenverte
 C:\Workspace\GitHub_Repsitories\Gruppeneinteilung\Gruppenverteilung\Gruppenverteilung\obj\Debug\netcoreapp2.1\Gruppenverteilung.pdb
 C:\Workspace\GitHub_Repsitories\Gruppeneinteilung\Gruppenverteilung\Gruppenverteilung\obj\Debug\netcoreapp2.1\Gruppenverteilung.csproj.CopyComplete
 C:\Workspace\GitHub_Repsitories\Gruppeneinteilung\Gruppenverteilung\Gruppenverteilung\obj\Debug\netcoreapp2.1\Razor\Views\Administration\AdministrationView.g.cshtml.cs
+C:\Workspace\GitHub_Repsitories\Gruppeneinteilung\Gruppenverteilung\Gruppenverteilung\obj\Debug\netcoreapp2.1\Razor\Views\Administration\AdministrationImportView.g.cshtml.cs
+C:\Workspace\GitHub_Repsitories\Gruppeneinteilung\Gruppenverteilung\Gruppenverteilung\obj\Debug\netcoreapp2.1\Razor\Views\Administration\AdministrationEditView.g.cshtml.cs

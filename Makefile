@@ -19,10 +19,10 @@ install:
 	)
 
 run:
-	docker run --rm -p 5000:80 ${volumes} ${container_name} ${image_name}
+	docker run --rm -p 5000:80 ${volumes} --name ${container_name} ${image_name}
 
 daemon:
-	docker run -d --rm -p 5000:80 ${volumes} ${container_name} ${image_name}
+	docker run -d --rm -p 5000:80 ${volumes} --name ${container_name} ${image_name}
 
 
 mrproper:

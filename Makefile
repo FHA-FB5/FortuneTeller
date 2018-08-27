@@ -1,6 +1,6 @@
 project_path=Gruppenverteilung/Gruppenverteilung/
 image_name=einteilungapp
-container_name=einteilungApp
+container_name=einteilungapp
 volumes=
 
 all:

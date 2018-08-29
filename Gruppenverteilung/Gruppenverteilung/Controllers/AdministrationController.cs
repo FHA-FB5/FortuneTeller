@@ -27,9 +27,20 @@ namespace Gruppenverteilung.Controllers
 
         public IActionResult ShowGroups(AdministrationModel model)
         {
-            return View();
+            return View(model);
         }
-        
+
+        public IActionResult AddTutor(AdministrationModel model)
+        {
+            Tutor tutor1 = new Tutor("Dennis",Studiengang.Informatik);
+
+            model.groups.FirstOrDefault().AddTutor(tutor1);
+
+            model.groups.FirstOrDefault().RemoveTutor(tutor1);
+
+            return View(model);
+        }
+
         public IActionResult RefreshGroups(AdministrationModel model)
         {
             model.groups = GlobalVariables.sorter.groups;

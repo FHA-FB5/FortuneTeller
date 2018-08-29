@@ -1,4 +1,6 @@
-﻿
+﻿@model Gruppenverteilung.Models.AdministrationModel
+@using Gruppenverteilung.Code;
+
 @{
     ViewData["Title"] = "AdministrationEditView";
 }
@@ -9,6 +11,17 @@
     <ul class="nav nav-tabs">
         <li><a a asp-area="" asp-controller="Administration" asp-action="AdministrationView">Übersicht</a></li>
         <li><a asp-area="" asp-controller="Administration" asp-action="AdministrationImportView">Daten einlesen</a></li>
-        <li class="active"><a >Zuweisen</a></li>
+        <li class="active"><a>Zuweisen</a></li>
     </ul>
+</div>
+<div class="row">
+    <form asp-controller="Administration" method="post" class="col-lg-12">
+        <div class="col-lg-6">
+            <div class="form-group">
+                
+            </div>
+        </div>
+        <input class="btn btn-primary" type="submit" formaction="AddTutor" value="AddTutor" />
+    </form>
+       
 </div>

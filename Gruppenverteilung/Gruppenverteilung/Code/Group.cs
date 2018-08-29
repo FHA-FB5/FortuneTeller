@@ -10,9 +10,11 @@ namespace Gruppenverteilung.Code
         #region propbs...
         public string Name { get; set; }
         public List<Member> MemberList { get; set; }
+        public List<Tutor> TutorList { get; set; }
         public List<KeyValuePair<Studiengang, double>> CourseRates { get; set; }
         public List<KeyValuePair<Geschlecht, double>> GenderRates { get; set; }
         public double AverageAge { get; set; }
+        public string Room { get; set; }
         #endregion
 
         #region Constructors...
@@ -20,6 +22,7 @@ namespace Gruppenverteilung.Code
         {
             Name = "";
             MemberList = new List<Member>();
+            TutorList = new List<Tutor>();
             CourseRates = new List<KeyValuePair<Studiengang, double>>();
             foreach (Studiengang studiengang in (Studiengang[])Enum.GetValues(typeof(Studiengang)))
             {
@@ -35,6 +38,7 @@ namespace Gruppenverteilung.Code
         {
             Name = name;
             MemberList = new List<Member>();
+            TutorList = new List<Tutor>();
             CourseRates = new List<KeyValuePair<Studiengang, double>>();
             foreach (Studiengang studiengang in (Studiengang[])Enum.GetValues(typeof(Studiengang)))
             {
@@ -204,6 +208,16 @@ namespace Gruppenverteilung.Code
             UpdateCourseRates();
             UpdateGenderRates();
             return true;
+        }
+
+        public void AddTutor(Tutor tutor)
+        {
+            TutorList.Add(tutor);
+        }
+
+        public void RemoveTutor(Tutor tutor)
+        {
+            TutorList.Remove(tutor);
         }
         #endregion
     }

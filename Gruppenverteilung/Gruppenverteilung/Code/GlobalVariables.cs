@@ -8,5 +8,6 @@ namespace Gruppenverteilung.Code
     public static class GlobalVariables
     {
         public static GroupSorter sorter = new GroupSorter();
+        public static byte[] passwordbyte_hashed = { 255, 135, 179, 126, 206, 136, 142, 185, 43, 179, 194, 75, 120, 229, 220, 177, 210, 237, 148, 52 };
     }
 }

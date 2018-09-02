@@ -1,0 +1,21 @@
+﻿@model Gruppenverteilung.Models.AdministrationLoginModel
+@{
+    ViewData["Title"] = "AdministrationLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Administration Login</h2>
+<div class="row">
+
+    <form asp-controller="Administration" asp-action="Login" method="post">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label asp-for="SessionInfo_Username">Name: </label>
+                <input asp-for="SessionInfo_Username" class="form-control" />
+                <label asp-for="SessionInfo_Password">Passwort: </label>
+                <input asp-for="SessionInfo_Password" class="form-control" type="password"/>
+            </div>
+            <input type="submit" value="Anmelden" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

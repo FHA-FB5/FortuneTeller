@@ -9,16 +9,31 @@
 
 <div class="row">
     <ul class="nav nav-tabs">
-        <li><a a asp-area="" asp-controller="Administration" asp-action="AdministrationView">Übersicht</a></li>
+        <li><a asp-area="" asp-controller="Administration" asp-action="AdministrationView">Übersicht</a></li>
         <li><a asp-area="" asp-controller="Administration" asp-action="AdministrationImportView">Daten einlesen</a></li>
         <li class="active"><a>Zuweisen</a></li>
     </ul>
 </div>
+<!--Füge Tut. in grp.-->
 <div class="row">
+    @if (Model.AddTutorMessage != null)
+    {
+        <div class="col-lg-12">
+            @if (Model.AddTutorIsSuccessfull)
+            {            
+                <div class="alert alert-success" role="alert">@Model.AddTutorMessage</div> 
+            }
+            else
+            {
+                <div class="alert alert-danger">@Model.AddTutorMessage</div> 
+            }
+        </div>
+    }
     <form asp-controller="Administration" method="post" class="col-lg-12">
         <div class="col-lg-6">
             <div class="form-group">
-                
+                <select asp-for="@Model.SelectedGroupName" asp-items="@Model.GroupSelectList" class="form-control"></select>
+                <select asp-for="@Model.SelectedTutorName" asp-items="@Model.TutorSelectList" class="form-control"></select>
             </div>
         </div>
         <input class="btn btn-primary" type="submit" formaction="AddTutor" value="AddTutor" />

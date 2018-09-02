@@ -8,32 +8,39 @@ namespace Gruppenverteilung.Code
 {
     public class GroupSorter
     {
-        public List<Group> groups;
+        public List<Group> Groups { get; set; }
+        public List<Tutor> Tutors { get; set; }
         public List<double> groupscores;
         public GroupSorter()
         {
-            groups = new List<Group>();
+            Groups = new List<Group>();
             //TODO Remove (Groups should be created from json)
-            groups.Add(new Group("TestGruppe1"));
-            groups.Add(new Group("TestGruppe2"));
-            groups.Add(new Group("TestGruppe3"));
-            groups.Add(new Group("TestGruppe4"));
-            groups.Add(new Group("TestGruppe5"));
+            Groups.Add(new Group("TestGruppe1"));
+            Groups.Add(new Group("TestGruppe2"));
+            Groups.Add(new Group("TestGruppe3"));
+            Groups.Add(new Group("TestGruppe4"));
+            Groups.Add(new Group("TestGruppe5"));
 
+            Tutors = new List<Tutor>();
+            Tutors.Add(new Tutor("TestTutor1", Studiengang.Informatik));
+            Tutors.Add(new Tutor("TestTutor2", Studiengang.Informatik));
+            Tutors.Add(new Tutor("TestTutor3", Studiengang.Informatik));
+            Tutors.Add(new Tutor("TestTutor4", Studiengang.Informatik));
+            Tutors.Add(new Tutor("TestTutor5", Studiengang.Informatik));
             groupscores = new List<double>();
         } 
 
         //Fill group list
         ///TODO Database based
         public void ReadGroups() { }
-
+        public void ReadTutors() { }
         public Group FindBestGroup(Member member)
         {
             Group BestGroup = FindNextEmptyGroup();
             if (BestGroup == null)
             {
-                double WorstMemberCourseRateInGroup = groups[0].CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
-                foreach (Group group in groups)
+                double WorstMemberCourseRateInGroup = Groups[0].CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
+                foreach (Group group in Groups)
                 {
                     double GroupCourseRate = group.CourseRates.FirstOrDefault(kvp => kvp.Key == member.Studiengang).Value;
                     if (GroupCourseRate == WorstMemberCourseRateInGroup)
@@ -65,7 +72,7 @@ namespace Gruppenverteilung.Code
 
         private Group FindNextEmptyGroup()
         {
-            foreach (Group g in groups)
+            foreach (Group g in Groups)
             {
                 if (g.MemberList.Count == 0)
                     return g;
@@ -102,5 +109,6 @@ namespace Gruppenverteilung.Code
             }
 
         }
+
     }
 }

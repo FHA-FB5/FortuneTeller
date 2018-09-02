@@ -93,7 +93,7 @@ namespace GruppenverteilerTests
             Member MCDMember = new Member("Test4", 25, Studiengang.MCD, Geschlecht.Maennlich);
 
             Gruppenverteilung.Code.GroupSorter sorter = new Gruppenverteilung.Code.GroupSorter();
-            sorter.groups = groups;
+            sorter.Groups = groups;
 
             //act
             Group grp1 = sorter.FindBestGroup(InfMember);
@@ -145,7 +145,7 @@ namespace GruppenverteilerTests
             groups.Add(new Group("grp6"));
 
             Gruppenverteilung.Code.GroupSorter sorter = new Gruppenverteilung.Code.GroupSorter();
-            sorter.groups = groups;
+            sorter.Groups = groups;
 
             //act
             sorter.SimulateByFile("../grpdata_01.txt");

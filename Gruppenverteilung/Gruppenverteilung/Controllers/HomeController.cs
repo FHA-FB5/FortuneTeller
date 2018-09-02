@@ -16,7 +16,7 @@ namespace Gruppenverteilung.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            return View("DataInputView");
         }
 
         public IActionResult DataInputView()

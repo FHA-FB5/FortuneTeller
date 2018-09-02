@@ -10,5 +10,5 @@ RUN dotnet publish -c Release -o out
 FROM microsoft/dotnet:aspnetcore-runtime
 WORKDIR /app
 COPY --from=build-env /app/out .
-ENTRYPOINT ["dotnet", "aspnetapp.dll"]
-
+COPY --from=build-env /app/*.txt ./
+ENTRYPOINT ["dotnet", "Gruppenverteilung.dll"]

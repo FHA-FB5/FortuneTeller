@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewData["Title"] = "NDataInputT";
+}
+
+<h2>NDataInputT</h2>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gruppeneinteilung</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+</head>
+<body>
+
+    <div class="container main">
+        <div class="row">
+            <div class="col s12 m10 l6 content">
+                <div class="card">
+                    <div class="card-content">
+                        <span class="card-title">Fachbereich 05</span>
+                        <p>Elektro- & Informationstechnik</p>
+                        <br />
+                        <img id="logo" src="static/logo.png">
+                        <br /><br />
+                        <h6>Anmeldung zur Gruppeneinteilung</h6>
+                        <form action="#nope">
+                            <div class="row">
+                                <div class="input-field col s12 m6">
+                                    <input name="name" id="name" type="text" class="validate" required>
+                                    <label for="name">Name</label>
+                                </div>
+                                <div class="input-field col s12 m6">
+                                    <input name="vorname" id="vorname" type="text" class="validate" required>
+                                    <label for="vorname">Vorname</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <input name="age" id="age" type="number" min=16 max=99 class="validate" required>
+                                    <label for="age">Alter</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <select name="geschlecht" required>
+                                        <option value="" disabled selected>Auswählen</option>
+                                        <option value="männlich">Männlich</option>
+                                        <option value="weiblich">Weiblich</option>
+                                    </select>
+                                    <label>Geschlecht</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <select name="studiengang" required>
+                                        <option value="" disabled selected>Auswählen</option>
+                                        <option value="et">Elektrotechnik</option>
+                                        <option value="it">Informatik</option>
+                                        <option value="mcd">MCD</option>
+                                        <option value="wi">Wirtschaftsinformatik</option>
+                                    </select>
+                                    <label>Studiengang</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col s12">
+                                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                                        Absenden
+                                        <i class="material-icons right">send</i>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+    </script>
+
+</body>
+</html>
+

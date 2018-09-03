@@ -33,7 +33,7 @@ namespace Gruppenverteilung.Controllers
             dataOutputModel.GruppenName = BestGroup.Name;
 
             ///Rückgabe der view mit passendem Model.
-            return View("../DataOutput/DataOutputView", dataOutputModel);
+            return View("../DataOutput/NDataOutputT");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

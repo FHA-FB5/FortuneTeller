@@ -178,7 +178,7 @@ namespace Gruppenverteilung.Code
         public Group FindBestGroup(Member member)
         {
             //We haven't filtered any groups yet.
-            List<Group> FilterdGroups = GlobalVariables.Sorter.Groups;
+            List<Group> FilterdGroups = GlobalVariables.sorter.Groups;
 
             FilterdGroups = GetLowestMemberGroupsFromGroupList(FilterdGroups);
             FilterdGroups = GetLowestGenderRateFromGroupList(FilterdGroups, member.Geschlecht);
@@ -340,7 +340,7 @@ namespace Gruppenverteilung.Code
                 GlobalVariables.TestLogger.LogLine(String.Format("(Member Added) -> {0} ({1}), {2}, {3} - in Group \"{4}\"", member.Name, member.Age, member.Studiengang.ToString(), member.Geschlecht.ToString(), BestGroup.Name));
 
                 //LOGGING: Group-State Log
-                foreach (Group group in GlobalVariables.Sorter.Groups)
+                foreach (Group group in GlobalVariables.sorter.Groups)
                 {
                     GlobalVariables.TestLogger.LogLine(String.Format("(Group State) -> GroupName: {0}, MemberCount: {1}, Male: {2:N2}%, Female: {3:N2}%, MCD: {4:N2}%, INF: {5:N2}%, WINF: {6:N2}%, ETECH: {7:N2}% ",
                         group.Name,

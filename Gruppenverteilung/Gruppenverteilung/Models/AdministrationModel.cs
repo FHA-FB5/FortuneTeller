@@ -11,32 +11,8 @@ namespace Gruppenverteilung.Models
     {
         public List<Group> groups;
         public List<Tutor> tutors;
-        public Group SelectedGroup
-        {
-            get
-            {
-                if(SelectedGroupName!= null && SelectedGroupName != "")
-                {
-                    return FindGroupByName(SelectedGroupName);
-                }
-                return null;
-            }
-            set
-            {
-            }
-        }
-        public Tutor SelectedTutor
-        {
-            get
-            {
-                if (SelectedTutorName != null && SelectedTutorName != "")
-                {
-                    return FindTutorByName(SelectedTutorName);
-                }
-                return null;
-            }
-            set { }
-        }
+        public Group SelectedGroup{ get; set; }
+        public Tutor SelectedTutor { get; set; }
         public IEnumerable<SelectListItem> GroupSelectList { get; set; }
         public String SelectedGroupName { get; set; }
         public IEnumerable<SelectListItem> TutorSelectList { get; set; }
@@ -44,6 +20,8 @@ namespace Gruppenverteilung.Models
         public string SelectedGroupRoom { get; set; }
         public String AddTutorMessage { get; set; }
         public bool AddIsSuccessful { get; set; }
+        public IEnumerable<SelectListItem> ZugewieseneTutorenSelectList { get; set; }
+
 
         public AdministrationModel()
         {
@@ -67,12 +45,11 @@ namespace Gruppenverteilung.Models
             GroupSelectList = lst;
         }
 
-
         public void RefreshTutors()
         {
             tutors = GlobalVariables.sorter.Tutors;
 
-            List<SelectListItem> lst = new List<SelectListItem>();
+            List<SelectListItem> lstTutoren = new List<SelectListItem>();
 
             foreach (Tutor tutor in tutors)
             {
@@ -80,11 +57,20 @@ namespace Gruppenverteilung.Models
                 SelectListItem sli = new SelectListItem(tutor.Name, tutor.Name);
                 if (tutor.HasGroup ==false)
                 {
-                    lst.Add(sli);
+                    lstTutoren.Add(sli);
                 }
             }
+            TutorSelectList = lstTutoren;
 
-            TutorSelectList = lst;
+            List<SelectListItem> lstZT = new List<SelectListItem>();
+
+            foreach(Tutor tutor in SelectedGroup.TutorList)
+            {
+                SelectListItem sli = new SelectListItem(tutor.Name, tutor.Name);
+                lstZT.Add(sli);
+            }
+
+            ZugewieseneTutorenSelectList = lstZT;
         }
         public Group FindGroupByName(string selectedGroupName)
         {

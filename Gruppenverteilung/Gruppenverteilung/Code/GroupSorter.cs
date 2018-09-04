@@ -190,6 +190,23 @@ namespace Gruppenverteilung.Code
             return FilterdGroups[0];
         }
 
+        public bool MemberAlreadyExists(Member member)
+        {
+            foreach(Group group in Groups)
+            {
+                foreach(Member existingMember in group.MemberList)
+                {
+                    if(member.Name == existingMember.Name && member.Vorname == existingMember.Vorname && 
+                        member.Age == existingMember.Age && member.Studiengang == existingMember.Studiengang)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
         private List<Group> GetLowestMemberGroupsFromGroupList(List<Group> grouplist)
         {
             /*

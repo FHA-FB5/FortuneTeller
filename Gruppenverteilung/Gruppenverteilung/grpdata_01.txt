@@ -1,4 +1,4 @@
-Dennis;23;m;inf
+Dennis Koob;23;m;inf
 Peter;25;m;MCD
 Dennis;23;m;inf
 Vanessa;28;w;winf

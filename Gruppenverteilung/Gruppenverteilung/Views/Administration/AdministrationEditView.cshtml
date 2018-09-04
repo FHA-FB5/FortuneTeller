@@ -1,4 +1,5 @@
-﻿
+﻿@model Gruppenverteilung.Models.AdministrationModel
+@using Gruppenverteilung.Code;
 @{
     ViewData["Title"] = "AdministrationEditView";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,3 +7,17 @@
 
 <h2>AdministrationEditView</h2>
 
+
+<form asp-controller="Administration" method="post" class="col-lg-12">
+
+    <select asp-for="@Model.SelectedGroupName" asp-items="@Model.GroupSelectList" class="form-control"></select>
+    <select asp-for="@Model.SelectedTutorName" asp-items="@Model.ZugewieseneTutorenSelectList" class="form-control"></select>
+    <div class="row">
+        <h2>Tutor zuweisen</h2>
+        <div class="col-lg-6">
+            <p>Tutor</p>
+            <select asp-for="@Model.SelectedTutorName" asp-items="@Model.TutorSelectList" class="form-control"></select>
+        </div>
+    </div>
+    <input class="btn btn-primary" type="submit" formaction="AddTutor" value="AddTutor" />
+</form>

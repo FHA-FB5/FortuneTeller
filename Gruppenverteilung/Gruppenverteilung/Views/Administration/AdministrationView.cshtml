@@ -27,76 +27,95 @@
                     if (j < Model.groups.Count)
                     {
                     <div class="col-lg-4">
-                    <label>
-                        @Model.groups[j].Name
-                    </label>
-                    <ul class="list-group">
-                        @*Tutoren anzeigen*@
-                        @foreach (Tutor t in Model.groups[j].TutorList)
+                        <label>
+                            @Model.groups[j].Name
+                        </label>
+                        <p>Raum: @Model.groups[j].Room</p>
+                        <ul class="list-group">
+                            @*Tutoren anzeigen*@
+                            @foreach (Tutor t in Model.groups[j].TutorList)
+                            {
+                                <li class="list-group-item"><b style="color:blue">@t.Name</b></li>
+                            }
+
+                            @*Erstis anzeigen*@
+                            @foreach (Member m in Model.groups[j].MemberList)
+                            {
+                                <li class="list-group-item">@m.Vorname @m.Name, @m.Studiengang.ToString()</li>
+                            }
+                        </ul>
+
+
+                        <label>
+                            Gruppen Stats:
+                        </label>
+
+
+                        <p>Anzahl: @Model.groups[j].MemberList.Count<p>
+                        <p>Durchschnittsalter: @Model.groups[j].AverageAge</p>
+
+                        <p> Männlich:</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar"
+                                 aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(Model.groups[j].GenderRates[0].Value * 100, 0).ToString()%">
+                                @Math.Round(Model.groups[j].GenderRates[0].Value * 100, 2).ToString()%
+                            </div>
+                        </div>
+
+                        <p> Weiblich:</p>
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-striped" role="progressbar"
+                                 aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(Model.groups[j].GenderRates[1].Value * 100, 0).ToString()%">
+                                @Math.Round(Model.groups[j].GenderRates[1].Value * 100, 2).ToString()%
+                            </div>
+                        </div>
+
+                        @*Kursraten Anzeigen*@
+                        @foreach (KeyValuePair<Studiengang, double> kvp in Model.groups[j].CourseRates)
                         {
-                            <li class="list-group-item"><b style="color:blue">@t.Name</b></li>
+                            <p>@kvp.Key:</p>
+
+                            @if (kvp.Key.ToString() == "Informatik")
+                            {
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-danger" role="progressbar"
+                                         aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
+                                        @Math.Round(kvp.Value * 100, 2).ToString()%
+                                    </div>
+                                </div>
+                            }
+
+                            @if (kvp.Key.ToString() == "MCD")
+                            {
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-info" role="progressbar"
+                                         aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
+                                        @Math.Round(kvp.Value * 100, 2).ToString()%
+                                    </div>
+                                </div>
+                            }
+
+                            @if (kvp.Key.ToString() == "Wirtschaftsinformatik")
+                            {
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-success" role="progressbar"
+                                         aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
+                                        @Math.Round(kvp.Value * 100, 2).ToString()% @kvp.Key
+                                    </div>
+                                </div>
+                            }
+
+                            @if (kvp.Key.ToString() == "Elektrotechnik")
+                            {
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-warning" role="progressbar"
+                                         aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
+                                        @Math.Round(kvp.Value * 100, 2).ToString()% @kvp.Key
+                                    </div>
+                                </div>
+                            }
                         }
-
-                        @*Erstis anzeigen*@
-                        @foreach (Member m in Model.groups[j].MemberList)
-                        {
-                            <li class="list-group-item">@m.Name, @m.Studiengang.ToString()</li>
-                        }
-                    </ul>
-
-
-                    <label>
-                        Gruppen Stats:
-                    </label>
-
-
-
-                    @*Kursraten Anzeigen*@
-                    @foreach (KeyValuePair<Studiengang, double> kvp in Model.groups[j].CourseRates)
-                    {
-                        <p>@kvp.Key:</p>
-
-                    @if (kvp.Key.ToString() == "Informatik")
-                    {
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-danger" role="progressbar"
-                                 aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
-                                @Math.Round(kvp.Value * 100, 2).ToString()%
-                            </div>
-                        </div>
-                    }
-
-                    @if (kvp.Key.ToString() == "MCD")
-                    {
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-info" role="progressbar"
-                                 aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
-                                @Math.Round(kvp.Value * 100, 2).ToString()% 
-                            </div>
-                        </div>
-                    }
-
-                    @if (kvp.Key.ToString() == "Wirtschaftsinformatik")
-                    {
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success" role="progressbar"
-                                 aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
-                                @Math.Round(kvp.Value * 100, 2).ToString()% @kvp.Key
-                            </div>
-                        </div>
-                    }
-
-                    @if (kvp.Key.ToString() == "Elektrotechnik")
-                    {
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-warning" role="progressbar"
-                                 aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
-                                @Math.Round(kvp.Value * 100, 2).ToString()% @kvp.Key
-                            </div>
-                        </div>
-                    }
-                    }
-                </div>
+                    </div>
                     }
                 }
             </div>

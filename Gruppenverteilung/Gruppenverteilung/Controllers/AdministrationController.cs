@@ -14,6 +14,11 @@ namespace Gruppenverteilung.Controllers
     {
         public IActionResult Index()
         {
+            if (HttpContext.Session.GetString("LoggedIn") != null)
+            {
+                AdministrationModel AdminModel = new AdministrationModel();
+                return View("AdministrationView", AdminModel);
+            }
             AdministrationLoginModel model = new AdministrationLoginModel();
             return View("AdministrationLogin", model);
         }

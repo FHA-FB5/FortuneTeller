@@ -20,11 +20,6 @@ namespace Gruppenverteilung.Controllers
             return View();
         }
 
-        public IActionResult DataInputView()
-        {
-            return View();
-        }
-
         [HttpPost]
         public IActionResult SubmitData(DataInputModel model)
         {

@@ -8,7 +8,7 @@ namespace Gruppenverteilung.Controllers
 {
     public class DataOutputController : Controller
     {
-        public IActionResult DataOutputView(DataOutputModel model)
+        public IActionResult ShowGroupView(DataOutputModel model)
         {
             return View(model);
         }

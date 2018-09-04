@@ -42,7 +42,8 @@ namespace Gruppenverteilung.Controllers
                 return View("LogInError");
             }
             model.SelectedGroup = model.groups[0];
-            return View(model);
+            //return View(model);
+            return View("../Administration/AdminTestView");
         }
 
         public IActionResult ShowGroups(AdministrationModel model)

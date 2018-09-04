@@ -8069,11 +8069,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\GruppenverteilerTests.csproj",
+      "projectUniqueName": "C:\\Workspace\\GitHub_Repsitories\\Tutorarbeit\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\GruppenverteilerTests.csproj",
       "projectName": "GruppenverteilerTests",
-      "projectPath": "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\GruppenverteilerTests.csproj",
+      "projectPath": "C:\\Workspace\\GitHub_Repsitories\\Tutorarbeit\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\GruppenverteilerTests.csproj",
       "packagesPath": "C:\\Users\\maxco\\.nuget\\packages\\",
-      "outputPath": "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\obj\\",
+      "outputPath": "C:\\Workspace\\GitHub_Repsitories\\Tutorarbeit\\Gruppeneinteilung\\Gruppenverteilung\\GruppenverteilerTests\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -8092,8 +8092,8 @@
       "frameworks": {
         "netcoreapp2.1": {
           "projectReferences": {
-            "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj": {
-              "projectPath": "C:\\Workspace\\GitHub_Repsitories\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj"
+            "C:\\Workspace\\GitHub_Repsitories\\Tutorarbeit\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj": {
+              "projectPath": "C:\\Workspace\\GitHub_Repsitories\\Tutorarbeit\\Gruppeneinteilung\\Gruppenverteilung\\Gruppenverteilung\\Gruppenverteilung.csproj"
             }
           }
         }

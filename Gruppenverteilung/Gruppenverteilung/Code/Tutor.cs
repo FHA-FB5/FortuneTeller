@@ -9,7 +9,7 @@ namespace Gruppenverteilung.Code
     {
         public string Name { get; set; }
         public Studiengang Studiengang { get; set; }
-
+        public bool HasGroup { get; set; }
         public Tutor()
         {
 

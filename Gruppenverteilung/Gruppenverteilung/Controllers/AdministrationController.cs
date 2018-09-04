@@ -59,21 +59,41 @@ namespace Gruppenverteilung.Controllers
             {
                 return View("LogInError");
             }
-            //Find tutor by name
-            Tutor selectedTutor = model.FindTutorByName(model.SelectedTutorName);
-            //Find group by name
-            Group selectedGroup = model.FindGroupByName(model.SelectedGroupName);
 
             try
             {
-                selectedGroup.AddTutor(selectedTutor);
-                model.AddTutorMessage = String.Format("Tutor {0} wurde erfolgreich der Gruppe: {1} zugewiesen", selectedTutor.Name, selectedGroup.Name);
-                model.AddTutorIsSuccessfull = true;
+                model.SelectedGroup.AddTutor(model.SelectedTutor);
+                model.SelectedTutor.HasGroup = true;
+                model.AddTutorMessage = String.Format("Tutor {0} wurde erfolgreich der Gruppe: {1} zugewiesen", model.SelectedTutor.Name, model.SelectedGroup.Name);
+                model.AddIsSuccessful = true;
+
+                model.RefreshTutors();
+                
             }
             catch
             {
-                model.AddTutorMessage = String.Format("Tutor {0} konnte nicht der Gruppe: {1} zugewiesen werden!", selectedTutor.Name, selectedGroup.Name);
-                model.AddTutorIsSuccessfull = false;
+                model.AddTutorMessage = String.Format("Tutor {0} konnte nicht der Gruppe: {1} zugewiesen werden!", model.SelectedTutor.Name, model.SelectedGroup.Name);
+                model.AddIsSuccessful = false;
+            }
+
+            return View("../Administration/AdministrationEditView", model);
+        }
+        public IActionResult AddRoom(AdministrationModel model)
+        {
+            if (HttpContext.Session.GetString("LoggedIn") == null)
+            {
+                return View("LogInError");
+            }
+            
+            try
+            {
+                model.AddTutorMessage = String.Format("Raum {0} wurde erfolgreich der Gruppe: {1} zugewiesen", model.SelectedGroup.Room, model.SelectedGroup.Name);
+                model.AddIsSuccessful = true;
+            }
+            catch
+            {
+                model.AddTutorMessage = String.Format("Raum {0} konnte nicht der Gruppe: {1} zugewiesen werden!", model.SelectedGroup.Room, model.SelectedGroup.Name);
+                model.AddIsSuccessful = false;
             }
 
             return View("../Administration/AdministrationEditView", model);

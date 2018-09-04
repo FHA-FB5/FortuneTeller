@@ -19,8 +19,8 @@
     @if (Model.AddTutorMessage != null)
     {
         <div class="col-lg-12">
-            @if (Model.AddTutorIsSuccessfull)
-            {            
+            @if (Model.AddIsSuccessful)
+            {
                 <div class="alert alert-success" role="alert">@Model.AddTutorMessage</div> 
             }
             else
@@ -29,14 +29,67 @@
             }
         </div>
     }
-    <form asp-controller="Administration" method="post" class="col-lg-12">
-        <div class="col-lg-6">
-            <div class="form-group">
-                <select asp-for="@Model.SelectedGroupName" asp-items="@Model.GroupSelectList" class="form-control"></select>
-                <select asp-for="@Model.SelectedTutorName" asp-items="@Model.TutorSelectList" class="form-control"></select>
+        <form asp-controller="Administration" method="post" class="col-lg-12">
+            <div class="row">
+                <h1>Gruppe</h1>
             </div>
-        </div>
-        <input class="btn btn-primary" type="submit" formaction="AddTutor" value="AddTutor" />
-    </form>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>Gruppe</p>
+                    <select asp-for="@Model.SelectedGroupName" asp-items="@Model.GroupSelectList" class="form-control"></select>
+                </div>
+
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <h2>Tutor zuweisen</h2>
+                <div class="col-lg-6">
+                    <p>Tutor</p>
+                    <select asp-for="@Model.SelectedTutorName" asp-items="@Model.TutorSelectList" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <input class="btn btn-primary" type="submit" formaction="AddTutor" value="AddTutor" />
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <h2>Tutor entfernen</h2>
+                <div class="col-lg-6">
+                    <p>Tutor</p>
+                   @* <select asp-for="@Model.SelectedGroup.SelectedTutorName" asp-items="@Model.SelectedGroup.TutorSelectList" class="form-control"></select>*@
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <input class="btn btn-primary" type="submit" formaction="AddTutor" value="AddTutor" />
+                </div>
+            </div>
+
+            <hr />
+
+            <div class="row">
+                <h2>Raum zuweisen</h2>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <p>Raum</p>
+                    <input asp-for="@Model.SelectedGroup.Room" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3">
+                    <input class="btn btn-primary" type="submit" formaction="AddRoom" value="AddRoom" />
+                </div>
+            </div>
+
+        </form>
        
 </div>

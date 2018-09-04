@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Gruppenverteilung.Code
 {
@@ -11,6 +12,19 @@ namespace Gruppenverteilung.Code
         public string Name { get; set; }
         public List<Member> MemberList { get; set; }
         public List<Tutor> TutorList { get; set; }
+        public IEnumerable<SelectListItem> TutorSelectList { get; set; }
+        public string SelectedTutorName { get; set; }
+        public Tutor SelectedTutor
+        {
+            get
+            {
+                if(SelectedTutorName != null && SelectedTutorName != "")
+                {
+                    return FindTutorByName(SelectedTutorName);
+                }
+                return null;
+            }
+        }
         public List<KeyValuePair<Studiengang, double>> CourseRates { get; set; }
         public List<KeyValuePair<Geschlecht, double>> GenderRates { get; set; }
         public double AverageAge { get; set; }
@@ -23,6 +37,7 @@ namespace Gruppenverteilung.Code
             Name = "";
             MemberList = new List<Member>();
             TutorList = new List<Tutor>();
+            TutorSelectList = new List<SelectListItem>();
             CourseRates = new List<KeyValuePair<Studiengang, double>>();
             foreach (Studiengang studiengang in (Studiengang[])Enum.GetValues(typeof(Studiengang)))
             {
@@ -39,6 +54,7 @@ namespace Gruppenverteilung.Code
             Name = name;
             MemberList = new List<Member>();
             TutorList = new List<Tutor>();
+            TutorSelectList = new List<SelectListItem>();
             CourseRates = new List<KeyValuePair<Studiengang, double>>();
             foreach (Studiengang studiengang in (Studiengang[])Enum.GetValues(typeof(Studiengang)))
             {
@@ -213,12 +229,33 @@ namespace Gruppenverteilung.Code
         public void AddTutor(Tutor tutor)
         {
             TutorList.Add(tutor);
+            RefreshTutors();
         }
 
         public void RemoveTutor(Tutor tutor)
         {
             TutorList.Remove(tutor);
+            RefreshTutors();
         }
+
+        public void RefreshTutors()
+        {
+            
+            List<SelectListItem> lst = new List<SelectListItem>();
+
+            foreach (Tutor tutor in TutorList)
+            {
+                lst.Add(new SelectListItem(tutor.Name, tutor.Name));
+            }
+
+            TutorSelectList = lst;
+        }
+
+        public Tutor FindTutorByName(string selectedTutorName)
+        {
+            return TutorList.Find(i => i.Name == selectedTutorName);
+        }
+
         #endregion
     }
 }

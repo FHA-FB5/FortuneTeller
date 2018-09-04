@@ -11,14 +11,34 @@ namespace Gruppenverteilung.Models
     {
         public List<Group> groups;
         public List<Tutor> tutors;
-        public Group selectedGroup;
-        public Tutor selectedTutor;
+        public Group SelectedGroup
+        {
+            get
+            {
+                if(SelectedGroupName!= null && SelectedGroupName != "")
+                {
+                    return FindGroupByName(SelectedGroupName);
+                }
+                return null;
+            }
+        }
+        public Tutor SelectedTutor
+        {
+            get
+            {
+                if (SelectedTutorName != null && SelectedTutorName != "")
+                {
+                    return FindTutorByName(SelectedTutorName);
+                }
+                return null;
+            }
+        }
         public IEnumerable<SelectListItem> GroupSelectList { get; set; }
         public String SelectedGroupName { get; set; }
         public IEnumerable<SelectListItem> TutorSelectList { get; set; }
         public String SelectedTutorName { get; set; }
         public String AddTutorMessage { get; set; }
-        public bool AddTutorIsSuccessfull { get; set; }
+        public bool AddIsSuccessful { get; set; }
 
         public AdministrationModel()
         {
@@ -51,7 +71,11 @@ namespace Gruppenverteilung.Models
             foreach (Tutor tutor in tutors)
             {
                 //GroupSelectList.ToList().Add(new SelectListItem(g.Name, g.Name));
-                lst.Add(new SelectListItem(tutor.Name, tutor.Name));
+                SelectListItem sli = new SelectListItem(tutor.Name, tutor.Name);
+                if (tutor.HasGroup ==false)
+                {
+                    lst.Add(sli);
+                }
             }
 
             TutorSelectList = lst;

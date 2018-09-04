@@ -3,6 +3,7 @@
 
 @{
     ViewData["Title"] = "AdministrationEditView";
+    string CurrentRoomName = (Model.SelectedGroup == null) ? "Kein Raum":Model.SelectedGroup.Room;
 }
 
 <h2>Zuweisen</h2>
@@ -63,7 +64,7 @@
                 <h2>Tutor entfernen</h2>
                 <div class="col-lg-6">
                     <p>Tutor</p>
-                   @* <select asp-for="@Model.SelectedGroup.SelectedTutorName" asp-items="@Model.SelectedGroup.TutorSelectList" class="form-control"></select>*@
+                   @*  <select asp-for="@Model.SelectedGroup.SelectedTutorName" asp-items="@Model.SelectedGroup.TutorSelectList" class="form-control"></select>*@
                 </div>
             </div>
 
@@ -81,7 +82,7 @@
             <div class="row">
                 <div class="col-lg-6">
                     <p>Raum</p>
-                    <input asp-for="@Model.SelectedGroup.Room" class="form-control" />
+                    <input asp-for="SelectedGroupRoom" class="form-control" value="@CurrentRoomName"/>
                 </div>
             </div>
             <div class="row">

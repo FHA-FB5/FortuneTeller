@@ -48,6 +48,7 @@ namespace Gruppenverteilung.Code
             {
                 GenderRates.Add(new KeyValuePair<Geschlecht, double>(geschlecht, 0.0));
             }
+            Room = "Keiner Zugewiesen";
         }
         public Group(string name)
         {
@@ -65,6 +66,7 @@ namespace Gruppenverteilung.Code
             {
                 GenderRates.Add(new KeyValuePair<Geschlecht, double>(geschlecht, 0.0));
             }
+            Room = "Keiner Zugewiesen";
         }
         #endregion
 

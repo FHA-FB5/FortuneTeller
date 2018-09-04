@@ -84,7 +84,9 @@ namespace Gruppenverteilung.Controllers
             {
                 return View("LogInError");
             }
-            
+
+            model.SelectedGroup.Room = model.SelectedGroupRoom;
+
             try
             {
                 model.AddTutorMessage = String.Format("Raum {0} wurde erfolgreich der Gruppe: {1} zugewiesen", model.SelectedGroup.Room, model.SelectedGroup.Name);

@@ -21,6 +21,9 @@ namespace Gruppenverteilung.Models
                 }
                 return null;
             }
+            private set
+            {
+            }
         }
         public Tutor SelectedTutor
         {
@@ -37,11 +40,13 @@ namespace Gruppenverteilung.Models
         public String SelectedGroupName { get; set; }
         public IEnumerable<SelectListItem> TutorSelectList { get; set; }
         public String SelectedTutorName { get; set; }
+        public string SelectedGroupRoom { get; set; }
         public String AddTutorMessage { get; set; }
         public bool AddIsSuccessful { get; set; }
 
         public AdministrationModel()
         {
+            SelectedGroup = new Group();
             RefreshGroups();
             RefreshTutors();
         }

@@ -1,0 +1,21 @@
+﻿@model Gruppenverteilung.Models.DataOutputModel
+@{
+    ViewData["Title"] = "ShowGroupView";
+    Layout = "~/Views/Shared/_publicLayout.cshtml";
+}
+
+<div class="container main">
+    <div class="row">
+        <div class="col s12 m8 l8 content">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title">Gruppeneinteilung Fachbereich 05</span>
+                    <p>Elektro- & Informationstechnik</p>
+                    <br />
+                    <p>Du bist in der Gruppe <strong>@Model.GruppenName</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "AdministrationEditView";
-    string CurrentRoomName = (Model.SelectedGroup == null) ? "Kein Raum":Model.SelectedGroup.Room;
+    string CurrentRoomName = (Model.SelectedGroup.Room == null) ? "Kein Raum":Model.SelectedGroup.Room;
 }
 
 <h2>Zuweisen</h2>

@@ -21,7 +21,7 @@ namespace Gruppenverteilung.Models
                 }
                 return null;
             }
-            private set
+            set
             {
             }
         }
@@ -35,6 +35,7 @@ namespace Gruppenverteilung.Models
                 }
                 return null;
             }
+            set { }
         }
         public IEnumerable<SelectListItem> GroupSelectList { get; set; }
         public String SelectedGroupName { get; set; }

@@ -13,6 +13,9 @@ namespace Gruppenverteilung.Models
         [MaxLength(100)]
         public string Name { get; set; }
         [Required]
+        [MaxLength(100)]
+        public string Vorname { get; set; }
+        [Required]
         [Range(1,100)]
         public int Alter { get; set; }
         [Required]

@@ -16,7 +16,8 @@ namespace Gruppenverteilung.Controllers
     {
         public IActionResult Index()
         {
-            return View("DataInputView");
+            //return View("DataInputView");
+            return View();
         }
 
         public IActionResult DataInputView()
@@ -33,7 +34,7 @@ namespace Gruppenverteilung.Controllers
             dataOutputModel.GruppenName = BestGroup.Name;
 
             ///Rückgabe der view mit passendem Model.
-            return View("../DataOutput/NDataOutputT");
+            return View("../DataOutput/ShowGroupView", dataOutputModel);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

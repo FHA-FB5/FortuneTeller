@@ -13,6 +13,11 @@ namespace Gruppenverteilung.Code
         public Studiengang Studiengang { get; set; }
         public Geschlecht Geschlecht { get; set; }
 
+        public Member()
+        {
+
+        }
+
         public Member(string name,string vorname, int age, Studiengang studiengang, Geschlecht geschlecht)
         {
             Name = name;

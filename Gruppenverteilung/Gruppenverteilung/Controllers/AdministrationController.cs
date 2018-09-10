@@ -7,6 +7,7 @@ using Gruppenverteilung.Code;
 using Gruppenverteilung.Models;
 using Microsoft.AspNetCore.Http;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace Gruppenverteilung.Controllers
 {
@@ -151,8 +152,19 @@ namespace Gruppenverteilung.Controllers
         #endregion
 
         #region "New ADMINISTRATIONEDITVIEW"
-
-
+        [HttpPost]
+        public IActionResult SerializeGroups(AdministrationModel model)
+        {
+            string allGroups = "";
+            foreach(Group group in model.groups)
+            {
+                string output = Serializer.SerializeGroup(group);
+                allGroups += output;
+            }
+            
+            
+            return View("../Administration/AdministrationImportView", model);
+        }
 
         #endregion
     }

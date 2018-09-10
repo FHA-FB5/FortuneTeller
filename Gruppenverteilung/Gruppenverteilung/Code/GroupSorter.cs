@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Gruppenverteilung.Code;
+using Newtonsoft.Json;
 
 namespace Gruppenverteilung.Code
 {
@@ -29,6 +30,7 @@ namespace Gruppenverteilung.Code
             Tutors.Add(new Tutor("TestTutor5", Studiengang.Informatik));
             groupscores = new List<double>();
         }
+
         public double AverageMemberCount
         {
             get

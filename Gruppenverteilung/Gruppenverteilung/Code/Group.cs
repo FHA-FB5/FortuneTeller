@@ -146,53 +146,6 @@ namespace Gruppenverteilung.Code
             GenderRates = UpdatedGenderRates;
 
         }
-        //public double CalculateScore(Member member)
-        //{
-        //    if (MemberList.Count > 0)
-        //    {
-        //        ///TODO Berechne Score der Gruppe mit neuem Member!
-        //        double ageScore = 0.0, genderScore = 0.0, stdScore = 0.0;
-        //        foreach (Member m in MemberList)
-        //        {
-        //            AverageAge += m.Age;
-        //        }
-        //        AverageAge /= (MemberList.Count);
-        //        ageScore = member.Age - AverageAge;
-
-        //        ///Get rid of the sign 
-        //        if (ageScore != 0)
-        //        {
-        //            ageScore = Math.Pow(ageScore, 2);
-        //            ageScore = Math.Sqrt(ageScore);
-        //        }
-
-        //        foreach (Studiengang studiengang in (Studiengang[])Enum.GetValues(typeof(Studiengang)))
-        //        {
-        //            int count = 0;
-        //            foreach (Member m in MemberList)
-        //            {
-        //                if (m.Studiengang == studiengang)
-        //                    count++;
-        //            }
-        //            stdScore += ((count / (double)MemberList.Count) - 1 / Enum.GetNames(typeof(Studiengang)).Length);
-        //        }
-
-        //        foreach (Geschlecht geschlecht in (Geschlecht[])Enum.GetValues(typeof(Geschlecht)))
-        //        {
-        //            int count = 0;
-        //            foreach (Member m in MemberList)
-        //            {
-        //                if (m.Geschlecht == geschlecht)
-        //                    count++;
-        //            }
-        //            genderScore += ((count / MemberList.Count) - 1 / Enum.GetNames(typeof(Geschlecht)).Length);
-        //        }
-
-
-        //        return ageScore + stdScore + genderScore;
-        //    }
-        //    return 0.0;
-        //}
         public void AddMember(string filepath)
         {
             string line;
@@ -257,6 +210,7 @@ namespace Gruppenverteilung.Code
         {
             return TutorList.Find(i => i.Name == selectedTutorName);
         }
+
 
         #endregion
     }

@@ -11,26 +11,14 @@ namespace Gruppenverteilung.Code
     {
         public List<Group> Groups { get; set; }
         public List<Tutor> Tutors { get; set; }
+        [JsonIgnore]
         public List<double> groupscores;
         public GroupSorter()
         {
-            Groups = new List<Group>();
-            //TODO Remove (Groups should be created from json)
-            Groups.Add(new Group("TestGruppe1"));
-            Groups.Add(new Group("TestGruppe2"));
-            Groups.Add(new Group("TestGruppe3"));
-            Groups.Add(new Group("TestGruppe4"));
-            Groups.Add(new Group("TestGruppe5"));
 
-            Tutors = new List<Tutor>();
-            Tutors.Add(new Tutor("TestTutor1", Studiengang.Informatik));
-            Tutors.Add(new Tutor("TestTutor2", Studiengang.Informatik));
-            Tutors.Add(new Tutor("TestTutor3", Studiengang.Informatik));
-            Tutors.Add(new Tutor("TestTutor4", Studiengang.Informatik));
-            Tutors.Add(new Tutor("TestTutor5", Studiengang.Informatik));
-            groupscores = new List<double>();
         }
 
+        [JsonIgnore]
         public double AverageMemberCount
         {
             get
@@ -46,6 +34,7 @@ namespace Gruppenverteilung.Code
             }
             set { AverageMemberCount = value; }
         }
+        [JsonIgnore]
         public double AverageMaleRate
         {
             get
@@ -61,6 +50,7 @@ namespace Gruppenverteilung.Code
             }
             set { AverageMaleRate = value; }
         }
+        [JsonIgnore]
         public double AverageFemaleRate
         {
             get
@@ -76,6 +66,7 @@ namespace Gruppenverteilung.Code
             }
             set { AverageFemaleRate = value; }
         }
+        [JsonIgnore]
         public double AverageMCDRate
         {
             get
@@ -91,6 +82,7 @@ namespace Gruppenverteilung.Code
             }
             set { AverageMaleRate = value; }
         }
+        [JsonIgnore]
         public double AverageINFRate
         {
             get
@@ -106,6 +98,7 @@ namespace Gruppenverteilung.Code
             }
             set { AverageINFRate = value; }
         }
+        [JsonIgnore]
         public double AverageWINFRate
         {
             get
@@ -121,6 +114,7 @@ namespace Gruppenverteilung.Code
             }
             set { AverageWINFRate = value; }
         }
+        [JsonIgnore]
         public double AverageETECHRate
         {
             get

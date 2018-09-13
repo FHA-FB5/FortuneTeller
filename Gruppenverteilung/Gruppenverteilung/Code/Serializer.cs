@@ -19,5 +19,28 @@ namespace Gruppenverteilung.Code
             Group group = JsonConvert.DeserializeObject<Group>(json);
             return group;
         }
+
+        public static string SerializeGroupSorter()
+        {
+            string sorterJson = JsonConvert.SerializeObject(GlobalVariables.sorter);
+            return sorterJson;
+        }
+
+        public static void SaveGroupSorter()
+        {
+            string sorterJson = SerializeGroupSorter();
+            System.IO.File.WriteAllText("Groups.json",sorterJson);
+        }
+
+        public static GroupSorter DeserializeGroupSorter(string pathFrom)
+        {
+            GroupSorter sorter = JsonConvert.DeserializeObject<GroupSorter>(getStringFromJson(pathFrom));
+            return sorter;
+        }
+
+        private static string getStringFromJson(string path)
+        {
+            return System.IO.File.ReadAllText(path);
+        }
     }
 }

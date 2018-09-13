@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 
 namespace Gruppenverteilung.Code
 {
@@ -10,10 +11,15 @@ namespace Gruppenverteilung.Code
     {
         #region propbs...
         public string Name { get; set; }
+        [JsonIgnore]
         public List<Member> MemberList { get; set; }
+        [JsonIgnore]
         public List<Tutor> TutorList { get; set; }
+        [JsonIgnore]
         public IEnumerable<SelectListItem> TutorSelectList { get; set; }
+        [JsonIgnore]
         public string SelectedTutorName { get; set; }
+        [JsonIgnore]
         public Tutor SelectedTutor
         {
             get
@@ -25,8 +31,11 @@ namespace Gruppenverteilung.Code
                 return null;
             }
         }
+        [JsonIgnore]
         public List<KeyValuePair<Studiengang, double>> CourseRates { get; set; }
+        [JsonIgnore]
         public List<KeyValuePair<Geschlecht, double>> GenderRates { get; set; }
+        [JsonIgnore]
         public double AverageAge { get; set; }
         public string Room { get; set; }
         #endregion
@@ -113,6 +122,18 @@ namespace Gruppenverteilung.Code
             //Update old Rates.
             CourseRates = UpdatedCourseRates;
         }
+
+        private void UpdateAverageAge()
+        {
+            int sumAge = 0;
+
+            foreach (Member member in MemberList)
+            {
+               sumAge = sumAge + member.Age;
+            }
+
+            AverageAge = sumAge / MemberList.Count;
+        }
         public void UpdateGenderRates()
         {
             List<int> GenerCounts = new List<int>();
@@ -178,6 +199,7 @@ namespace Gruppenverteilung.Code
             MemberList.Add(member);
             UpdateCourseRates();
             UpdateGenderRates();
+            UpdateAverageAge();
             return true;
         }
 

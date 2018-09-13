@@ -149,20 +149,36 @@ namespace Gruppenverteilung.Controllers
             return View("../Administration/AdministrationEditView", model);
         }
 
+        public IActionResult AddGroup(AdministrationModel model)
+        {
+            Group gr = new Group("Neue Gruppe");
+
+            model.SelectedGroupName = "Neue Gruppe";
+            model.SelectedGroup = gr;
+
+            GlobalVariables.sorter.Groups.Add(gr);
+            
+            RefreshGroups(model);
+
+            return View("../Administration/AdminTestView", model);
+        }
+
+        public IActionResult DeleteSelectedGroup(AdministrationModel model)
+        {
+            model.SelectedGroup = model.FindGroupByName("Neue Gruppe");
+            GlobalVariables.sorter.Groups.Remove(model.SelectedGroup);
+            model.RefreshGroups();
+            return View("../Administration/AdminTestView", model);
+        }
+
         #endregion
 
         #region "New ADMINISTRATIONEDITVIEW"
         [HttpPost]
         public IActionResult SerializeGroups(AdministrationModel model)
         {
-            string allGroups = "";
-            foreach(Group group in model.groups)
-            {
-                string output = Serializer.SerializeGroup(group);
-                allGroups += output;
-            }
-            
-            
+            Serializer.SaveGroupSorter();
+
             return View("../Administration/AdministrationImportView", model);
         }
 

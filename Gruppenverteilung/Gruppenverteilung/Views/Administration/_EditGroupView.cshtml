@@ -1,0 +1,72 @@
+﻿<form>
+    <div class="row">
+        <div class="form-group col-lg-6">
+            <select class="col form-control">
+                <option value="0"> Gruppe 1 </option>
+                <option value="1"> Gruppe 2 </option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group col-lg-12">
+                            <div class="col-lg-6">
+                                <select id="TutorDropdownList" class="form-control">
+                                    <option value="Tutor1"> Tutor 1 </option>
+                                    <option value="Tutor2"> Tutor 2 </option>
+                                    <option value="Tutor3"> Tutor 3 </option>
+                                    <option value="Tutor4"> Tutor 4 </option>
+                                </select>
+                            </div>
+                            <div class="col-lg-3">
+                                <button type="button" onClick="AddTutorToList()" class="btn btn-default"> Hinzufügen </button>
+                            </div>
+                            <div class="col-lg-3">
+                                <button type="button" onClick="UpdateTutorList()" class="btn btn-default"> Update </button>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        Tutoren
+                                    </div>
+                                    <div id="TutorListPanel" class="panel-body">
+                                        <input name="TutorListCheckbox" checked type="Checkbox" /> Tutor1 <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group col-lg-12">
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" placeholder="Gruppenname" />
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="button" class="btn btn-success"><i class="fa fa-save"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" placeholder="Raum" />
+                            </div>
+                            <div class="col-lg-4">
+                                <button type="button" class="btn btn-success"><i class="fa fa-save"></i></button>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12">
+                            <div class="col-lg-8">
+                                <p>Gruppen Speichern</p>
+                            </div>
+                            <div class="col-lg-4">
+                                <button formaction="SerializeGroup" type="button" class="btn btn-success"><i class="fa fa-save"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

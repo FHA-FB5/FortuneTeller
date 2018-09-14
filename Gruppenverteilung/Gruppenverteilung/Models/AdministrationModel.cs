@@ -21,13 +21,16 @@ namespace Gruppenverteilung.Models
         public String AddTutorMessage { get; set; }
         public bool AddIsSuccessful { get; set; }
         public IEnumerable<SelectListItem> ZugewieseneTutorenSelectList { get; set; }
-
+        public Group CurrentSelectedGroup { get; set; }
 
         public AdministrationModel()
         {
             SelectedGroup = new Group();
             RefreshGroups();
             RefreshTutors();
+            CurrentSelectedGroup = new Group();
+            //HACK:
+            GlobalVariables.ToAssignTutors_ForAssignView = tutors;
         }
 
         public void RefreshGroups()

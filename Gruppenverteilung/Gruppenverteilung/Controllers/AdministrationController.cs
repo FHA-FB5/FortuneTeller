@@ -15,8 +15,22 @@ namespace Gruppenverteilung.Controllers
     {
         public IActionResult Index()
         {
-            AdministrationLoginModel model = new AdministrationLoginModel();
-            return View("AdministrationLogin", model);
+            if (HttpContext.Session.GetString("LoggedIn") == null)
+            {
+                //GlobalVariables.sorter.Groups[0].AddTutor(new Tutor("TestTutor 1", Studiengang.Informatik));
+                //GlobalVariables.sorter.Groups[0].AddTutor(new Tutor("TestTutor 2", Studiengang.Informatik));
+                //GlobalVariables.sorter.Groups[1].AddTutor(new Tutor("TestTutor 3", Studiengang.Informatik));
+                //GlobalVariables.sorter.Groups[2].AddTutor(new Tutor("TestTutor 4", Studiengang.Informatik));
+                //GlobalVariables.sorter.Groups[3].AddTutor(new Tutor("TestTutor 5", Studiengang.Informatik));
+                //GlobalVariables.sorter.Groups[4].AddTutor(new Tutor("TestTutor 6", Studiengang.Informatik));
+                GlobalVariables.CurrentSelectedGroupInTutorAssignView = GlobalVariables.sorter.Groups[0];
+                GlobalVariables.ToAssignTutors_ForAssignView = GlobalVariables.sorter.Tutors;
+                AdministrationLoginModel loginmodel = new AdministrationLoginModel();
+                return View("AdminLogInView", loginmodel);
+            }
+            AdministrationModel model = new AdministrationModel();
+            model.CurrentSelectedGroup = model.groups[0];
+            return View(model);
         }
         public IActionResult AdministrationView(AdministrationModel model)
         {
@@ -47,6 +61,7 @@ namespace Gruppenverteilung.Controllers
             return View("../Administration/AdminTestView");
         }
 
+        [HttpPost]
         public IActionResult ShowGroups(AdministrationModel model)
         {
             if (HttpContext.Session.GetString("LoggedIn") == null)
@@ -56,6 +71,7 @@ namespace Gruppenverteilung.Controllers
             return View(model);
         }
 
+        [HttpPost]
         public IActionResult RefreshGroups(AdministrationModel model)
         {
             if (HttpContext.Session.GetString("LoggedIn") == null)
@@ -63,9 +79,11 @@ namespace Gruppenverteilung.Controllers
                 return View("LogInError");
             }
             model.groups = GlobalVariables.sorter.Groups;
-            return View("../Administration/AdministrationView", model);
+
+            return View("../Administration/Index", model);
         }
 
+        [HttpPost]
         public IActionResult SimulateGroups(AdministrationModel model)
         {
             if (HttpContext.Session.GetString("LoggedIn") == null)
@@ -74,8 +92,7 @@ namespace Gruppenverteilung.Controllers
             }
             GlobalVariables.sorter.SimulateByFile("grpdata_01.txt");
             model.groups = GlobalVariables.sorter.Groups;
-
-            return View("../Administration/AdministrationView", model);
+            return View("../Administration/Index", model);
         }
 
         [HttpPost]
@@ -83,18 +100,57 @@ namespace Gruppenverteilung.Controllers
         {
             HttpContext.Session.SetString("Name", model.SessionInfo_Username);
 
-
             var sha1 = new System.Security.Cryptography.SHA1CryptoServiceProvider();
             byte[] hashbytes = sha1.ComputeHash(Encoding.UTF8.GetBytes(model.SessionInfo_Password));
             if (hashbytes.SequenceEqual(GlobalVariables.passwordbyte_hashed))
             {
                 HttpContext.Session.SetString("LoggedIn", "true");
-                return View("../Administration/AdministrationView", new AdministrationModel());
+                return RedirectToAction("Index");
+                //return View("../Administration/Index", new AdministrationModel());
             }
 
-            return View("../Administration/AdministrationLogin", model);
+            
+            return View("../Administration/AdminLogInView", model);
         }
 
+        [HttpPost]
+        public PartialViewResult TutorUpdate(string groupename, AdministrationModel model)
+        {
+            GlobalVariables.CurrentSelectedGroupInTutorAssignView = GlobalVariables.sorter.Groups.FirstOrDefault(g => g.Name == groupename);            
+
+            return PartialView("_AssignTutorListView", model);
+        }
+
+        [HttpPost]
+        public PartialViewResult RemoveTutorFromGroup(string tutorname, AdministrationModel model)
+        {  
+            GlobalVariables.ToAssignTutors_ForAssignView.Add(GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.FirstOrDefault(t => t.Name == tutorname));
+            GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.Remove(GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.FirstOrDefault(t => t.Name == tutorname));
+
+            return PartialView("_AssignTutorListView", model);
+        }
+
+        [HttpPost]
+        public PartialViewResult AddTutorToGroup(string tutorname, AdministrationModel model)
+        {
+            //TODO: Funktioniert noch nicht!     
+            GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.Add(GlobalVariables.ToAssignTutors_ForAssignView.FirstOrDefault(t => t.Name == tutorname));
+            GlobalVariables.ToAssignTutors_ForAssignView.Remove(GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.FirstOrDefault(t => t.Name == tutorname));
+
+            return PartialView("_ToAssignTutorListView", model);
+        }
+
+        [HttpPost]
+        public PartialViewResult UpdateAssignedTutorListView(AdministrationModel model)
+        {
+            return PartialView("_AssignTutorListView", model);
+        }
+
+        [HttpPost]
+        public PartialViewResult UpdateToAssignTutorListView(AdministrationModel model)
+        {
+            return PartialView("_ToAssignTutorListView", model);
+        }
         #region "Old ADMINISTRATIONEDITVIEW"
 
         public IActionResult AddTutor(AdministrationModel model)

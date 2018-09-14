@@ -1,0 +1,19 @@
+﻿@model AdministrationModel
+@using Gruppenverteilung.Code;
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<ul class="list-group for-search">
+    @if (GlobalVariables.ToAssignTutors_ForAssignView.Count == 0)
+    {
+        <li class="list-group-item">Alle Tutoren sind zugewiesen </li>
+    }
+    else
+    {
+        for (int i = 0; i < GlobalVariables.ToAssignTutors_ForAssignView.Count; i++)
+        {
+            <li class="list-group-item">@GlobalVariables.ToAssignTutors_ForAssignView[i].Name <a id="AddTutorButton" onclick="AddTutor('@GlobalVariables.ToAssignTutors_ForAssignView[i].Name')" class="btn btn-success"><i class="fas fa-plus"></i></a></li>
+        }
+    }
+</ul>

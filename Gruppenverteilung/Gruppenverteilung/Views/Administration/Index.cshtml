@@ -1,0 +1,53 @@
+﻿@model Gruppenverteilung.Models.AdministrationModel
+@using Gruppenverteilung.Code;
+
+@{
+    ViewData["Title"] = "AdministrationView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#stats">Übersicht</a></li>
+    <li><a data-toggle="tab" href="#assign">Tutoren zuweisen</a></li>
+    <li><a data-toggle="tab" href="#edit">Bearbeite Grupppen</a></li>
+    <li><a data-toggle="tab" href="#import">JSON-Import</a></li>
+</ul>
+
+<div class="tab-content">
+    <div id="stats" class="tab-pane fade in active">
+        <h3>Gruppen Statistiken</h3>
+        @Html.Partial("_StatsView", this.Model)
+    </div>
+    <div id="assign" class="tab-pane fade">
+        <h3>Zuweisen</h3>
+        @Html.Partial("_AssignView", this.Model)
+    </div>
+    <div id="edit" class="tab-pane fade">
+        <h3>Bearbeite Gruppen</h3>
+        @Html.Partial("_EditGroupView", this.Model)
+    </div>
+    <div id="import" class="tab-pane fade">
+        <h3>Import</h3>
+        <partial name="_ImportView" />
+    </div>
+</div>
+
+@*<h2>Übersicht</h2>
+
+<div class="row">
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#">Übersicht</a></li>
+        <li><a asp-area="" asp-controller="Administration" asp-action="AdministrationImportView">Daten einlesen</a></li>
+        <li><a asp-area="" asp-controller="Administration" asp-action="AdministrationEditView">Zuweisen</a></li>
+    </ul>
+</div>*@
+
+<div class="row">
+
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}

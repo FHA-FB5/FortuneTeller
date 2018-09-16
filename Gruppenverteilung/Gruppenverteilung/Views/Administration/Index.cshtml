@@ -8,16 +8,16 @@
 
 
 <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#stats">Übersicht</a></li>
-    <li><a data-toggle="tab" href="#assign">Tutoren zuweisen</a></li>
-    <li><a data-toggle="tab" href="#edit">Bearbeite Grupppen</a></li>
-    <li><a data-toggle="tab" href="#import">JSON-Import</a></li>
+    <li class="active"><a data-toggle="tab" href="#stats" id="stats-tab">Übersicht</a></li>
+    <li><a data-toggle="tab" href="#assign" id="assign-tab">Tutoren zuweisen</a></li>
+    <li><a data-toggle="tab" href="#edit" id="edit-tab">Bearbeite Grupppen</a></li>
+    <li><a data-toggle="tab" href="#import" id="import-tab">JSON-Import</a></li>
 </ul>
 
 <div class="tab-content">
     <div id="stats" class="tab-pane fade in active">
         <h3>Gruppen Statistiken</h3>
-        @Html.Partial("_StatsView", this.Model)
+        <div class="wrapper">@Html.Partial("_StatsView", this.Model)</div> 
     </div>
     <div id="assign" class="tab-pane fade">
         <h3>Zuweisen</h3>
@@ -29,7 +29,7 @@
     </div>
     <div id="import" class="tab-pane fade">
         <h3>Import</h3>
-        <partial name="_ImportView" />
+        <partial name="_ImportView" model="new GroupCreationModel()" />
     </div>
 </div>
 

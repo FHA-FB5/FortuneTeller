@@ -205,18 +205,17 @@ namespace Gruppenverteilung.Controllers
             return View("../Administration/AdministrationEditView", model);
         }
 
-        public IActionResult AddGroup(AdministrationModel model)
+        [HttpPost]
+        public PartialViewResult AddGroup(GroupCreationModel model)
         {
             Group gr = new Group("Neue Gruppe");
-
-            model.SelectedGroupName = "Neue Gruppe";
-            model.SelectedGroup = gr;
-
+            gr.Name = model.Name;
+            gr.Room = model.Room;
             GlobalVariables.sorter.Groups.Add(gr);
-            
-            RefreshGroups(model);
 
-            return View("../Administration/AdminTestView", model);
+            AdministrationModel adminModel = new AdministrationModel();
+            adminModel.CurrentSelectedGroup = adminModel.groups[0];
+            return PartialView("_StatsView", adminModel);
         }
 
         public IActionResult DeleteSelectedGroup(AdministrationModel model)

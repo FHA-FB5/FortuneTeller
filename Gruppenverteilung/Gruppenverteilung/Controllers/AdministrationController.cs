@@ -16,13 +16,7 @@ namespace Gruppenverteilung.Controllers
         public IActionResult Index()
         {
             if (HttpContext.Session.GetString("LoggedIn") == null)
-            {
-                //GlobalVariables.sorter.Groups[0].AddTutor(new Tutor("TestTutor 1", Studiengang.Informatik));
-                //GlobalVariables.sorter.Groups[0].AddTutor(new Tutor("TestTutor 2", Studiengang.Informatik));
-                //GlobalVariables.sorter.Groups[1].AddTutor(new Tutor("TestTutor 3", Studiengang.Informatik));
-                //GlobalVariables.sorter.Groups[2].AddTutor(new Tutor("TestTutor 4", Studiengang.Informatik));
-                //GlobalVariables.sorter.Groups[3].AddTutor(new Tutor("TestTutor 5", Studiengang.Informatik));
-                //GlobalVariables.sorter.Groups[4].AddTutor(new Tutor("TestTutor 6", Studiengang.Informatik));
+            { 
                 GlobalVariables.CurrentSelectedGroupInTutorAssignView = GlobalVariables.sorter.Groups[0];
                 GlobalVariables.ToAssignTutors_ForAssignView = GlobalVariables.sorter.Tutors;
                 AdministrationLoginModel loginmodel = new AdministrationLoginModel();
@@ -133,7 +127,6 @@ namespace Gruppenverteilung.Controllers
         [HttpPost]
         public PartialViewResult AddTutorToGroup(string tutorname, AdministrationModel model)
         {
-            //TODO: Funktioniert noch nicht!     
             GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.Add(GlobalVariables.ToAssignTutors_ForAssignView.FirstOrDefault(t => t.Name == tutorname));
             GlobalVariables.ToAssignTutors_ForAssignView.Remove(GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.FirstOrDefault(t => t.Name == tutorname));
 

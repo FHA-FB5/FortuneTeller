@@ -1,16 +1,24 @@
 ﻿@model AdministrationModel
 @using Gruppenverteilung.Code;
-<ul class="list-group">
-    @*<p>@Model.CurrentSelectedGroup.Name</p>*@
-    @if (GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.Count == 0)
-    {
-        <li class="list-group-item">Keine Tutoren Zugewiesen </li>
-    }
-    else
-    {
-        for (int i = 0; i < GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.Count; i++)
-        {
-            <li class="list-group-item">@GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList[i].Name <a id="RemoveTutorButton" onclick="RemoveTutor('@GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList[i].Name')" class="btn btn-danger"><i class="fas fa-trash"></i></a></li>
-        }
-    }
-</ul>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        @GlobalVariables.CurrentSelectedGroupInTutorAssignView.Name
+    </div>
+    <div class="panel-body">
+        <ul class="list-group">
+            @*<p>@Model.CurrentSelectedGroup.Name</p>*@
+            @if (GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.Count == 0)
+            {
+                <li class="list-group-item">Keine Tutoren Zugewiesen </li>
+            }
+            else
+            {
+                for (int i = 0; i < GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.Count; i++)
+                {
+                    <li  class="list-group-item">@GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList[i].Name <a id="RemoveTutorButton" onclick="RemoveTutor('@GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList[i].Name')" class="btn btn-danger"><i class="fas fa-trash"></i></a></li>
+                }
+            }
+        </ul>
+    </div>
+</div>

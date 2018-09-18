@@ -14,10 +14,6 @@
                         }
                     </select>
                 </div>
-
-                <div id="AssignedTutor_ListItems" class="form-group col-lg-6">
-                    @Html.Partial("_AssignTutorListView", Model);
-                </div>
             </div>
         </div>
     </div>
@@ -35,7 +31,11 @@
                 @Html.Partial("_ToAssignTutorListView", Model);
             </div>
         </div>
-
+        <div class="col-lg-6">            
+            <div id="AssignedTutor_ListItems" class="form-group col-lg-6">
+                @Html.Partial("_AssignTutorListView", Model);
+            </div>
+        </div>
     </div>
 
 </form>
@@ -67,6 +67,7 @@
             $("#ToAssignTutor_ListItems").html(res);
         });
     }
+
     //Change Tutorlist (as partial view) by changing the Group
     $("#CurrentSelectedGroup").change(function (event) {
         //alert($(this).val());

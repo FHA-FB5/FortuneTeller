@@ -1,20 +1,37 @@
-<<<<<<< HEAD
-﻿@model AdministrationModel
-@using Gruppenverteilung.Code;
+﻿@model Gruppenverteilung.Models.AdministrationModel
+@using Gruppenverteilung.Code
+<form>
+    <div class="row">
+        <div class="form-group col-lg-6">
+            <select id="CurrentSelectedGroupInEditGroupView" class="col form-control">
+              @for (int i = 0; i < Model.groups.Count; i++)
+                {
+                    <option value="@Model.groups[i].Name">
+                        @Model.groups[i].Name 
+                    </option>
+                }
+            </select>
+        </div>
+    </div>
+    <div id="GroupInfos" class="row">
+        @Html.Partial("_GroupInfo", Model);
+    </div>
+</form>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.LabelFor(x => GlobalVariables.CurrentSelectedGroupInGroupEditView.Name)
-                @Html.EditorFor(x => GlobalVariables.CurrentSelectedGroupInGroupEditView.Name)
-                @Html.LabelFor(x => GlobalVariables.CurrentSelectedGroupInGroupEditView.Room)
-                @Html.EditorFor(x => GlobalVariables.CurrentSelectedGroupInGroupEditView.Room)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-</table>
-=======
->>>>>>> d1b25325a307f51bbecf6f0e00223138940a2947
+<script>
+    //Change Tutorlist (as partial view) by changing the Group
+    $("#CurrentSelectedGroupInEditGroupView").change(function (event) {
+        //alert($(this).val());
+        var url = "/Administration/CurrentSelectedGroupInEditViewUpdate";
+        $.post(url, { groupname: $(this).val() }, function (res) {
+            $("#GroupInfos").html(res);
+        });
+    })
+
+   
+
+    function updateCurrentGroupSelectItem() {
+        $('#CurrentSelectedGroupInEditGroupView').val($('#gnInput').val());
+    }
+
+</script>

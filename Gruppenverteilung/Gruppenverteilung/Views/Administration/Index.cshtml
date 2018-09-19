@@ -17,7 +17,7 @@
 <div class="tab-content">
     <div id="stats" class="tab-pane fade in active">
         <h3>Gruppen Statistiken</h3>
-        <div class="wrapper">@Html.Partial("_StatsView", this.Model)</div> 
+        <div class="wrapper">@Html.Partial("_StatsView", this.Model)</div>
     </div>
     <div id="assign" class="tab-pane fade">
         <h3>Zuweisen</h3>
@@ -25,8 +25,9 @@
     </div>
     <div id="edit" class="tab-pane fade">
         <h3>Bearbeite Gruppen</h3>
-        <partial name="_CreateNewView" model="new GroupCreationModel()" />
-        <partial name="_SelectEditGroupView" model="this.Model" />
+        <!--<partial name="_CreateNewView" model="new GroupCreationModel()" />
+        <partial name="_SelectEditGroupView" model="this.Model" />-->
+        @Html.Partial("_EditGroupView", Model);
     </div>
     <div id="import" class="tab-pane fade">
         <h3>Import</h3>
@@ -36,18 +37,30 @@
 
 @*<h2>Übersicht</h2>
 
-<div class="row">
-    <ul class="nav nav-tabs">
-        <li class="active"><a href="#">Übersicht</a></li>
-        <li><a asp-area="" asp-controller="Administration" asp-action="AdministrationImportView">Daten einlesen</a></li>
-        <li><a asp-area="" asp-controller="Administration" asp-action="AdministrationEditView">Zuweisen</a></li>
-    </ul>
-</div>*@
+    <div class="row">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#">Übersicht</a></li>
+            <li><a asp-area="" asp-controller="Administration" asp-action="AdministrationImportView">Daten einlesen</a></li>
+            <li><a asp-area="" asp-controller="Administration" asp-action="AdministrationEditView">Zuweisen</a></li>
+        </ul>
+    </div>*@
 
 <div class="row">
 
 
 </div>
+<script>
+    function updateGroupProperties() {
+        var url = "/Administration/UpdateGroupProperties";
+        var gn = $('#gnInput').val();
+        var gr = $('#grInput').val();
+        updateCurrentGroupSelectItem();
+        $.post(url, { groupName: gn, groupRoom: gr }, function (res) {
+            $("#edit").html(res);
+        });
+        $("CurrentSelectedGroupInEditGroupView").val(gn);
+    }
+</script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 

@@ -25,7 +25,8 @@
     </div>
     <div id="edit" class="tab-pane fade">
         <h3>Bearbeite Gruppen</h3>
-        @Html.Partial("_EditGroupView", this.Model)
+        <partial name="_CreateNewView" model="new GroupCreationModel()" />
+        <partial name="_SelectEditGroupView" model="this.Model" />
     </div>
     <div id="import" class="tab-pane fade">
         <h3>Import</h3>

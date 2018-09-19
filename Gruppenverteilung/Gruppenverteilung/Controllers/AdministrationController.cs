@@ -24,6 +24,7 @@ namespace Gruppenverteilung.Controllers
                 //GlobalVariables.sorter.Groups[3].AddTutor(new Tutor("TestTutor 5", Studiengang.Informatik));
                 //GlobalVariables.sorter.Groups[4].AddTutor(new Tutor("TestTutor 6", Studiengang.Informatik));
                 GlobalVariables.CurrentSelectedGroupInTutorAssignView = GlobalVariables.sorter.Groups[0];
+                //GlobalVariables.CurrentSelectedGroupInGroupEditView = GlobalVariables.sorter.Groups[0];
                 GlobalVariables.ToAssignTutors_ForAssignView = GlobalVariables.sorter.Tutors;
                 AdministrationLoginModel loginmodel = new AdministrationLoginModel();
                 return View("AdminLogInView", loginmodel);
@@ -119,6 +120,14 @@ namespace Gruppenverteilung.Controllers
             GlobalVariables.CurrentSelectedGroupInTutorAssignView = GlobalVariables.sorter.Groups.FirstOrDefault(g => g.Name == groupename);            
 
             return PartialView("_AssignTutorListView", model);
+        }
+
+        [HttpPost]
+        public PartialViewResult EditGroupUpdate(string groupename, AdministrationModel model)
+        {
+            GlobalVariables.CurrentSelectedGroupInGroupEditView = GlobalVariables.sorter.Groups.FirstOrDefault(g => g.Name == groupename);
+
+            return PartialView("_EditGroupView", model);
         }
 
         [HttpPost]

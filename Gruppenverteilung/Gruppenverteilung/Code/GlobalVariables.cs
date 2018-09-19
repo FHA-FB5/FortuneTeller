@@ -15,6 +15,9 @@ namespace Gruppenverteilung.Code
 
         //HACK: WEil ich zu schlecht bin das mit dem Mdel im Controller zu managen -.-
         public static Group CurrentSelectedGroupInTutorAssignView = new Group();
+
+        public static Group CurrentSelectedGroupInGroupEditView = new Group();
+
         public static List<Tutor> ToAssignTutors_ForAssignView = new List<Tutor>();
     }
 }

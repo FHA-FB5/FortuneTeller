@@ -1,0 +1,26 @@
+﻿@model SingleGroupModel
+@using Gruppenverteilung.Code
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+<label>
+    @Model.Group.Name
+</label>
+
+<p>Raum: @Model.Group.Room</p>
+
+<ul class="list-group">
+    @*Tutoren anzeigen*@
+    @foreach (Tutor t in Model.Group.TutorList)
+    {
+        <li class="list-group-item"><b style="color:blue">@t.Name</b></li>
+    }
+
+    @*Erstis anzeigen*@
+    @foreach (Member m in Model.Group.MemberList)
+    {
+        <li class="list-group-item">@m.Vorname @m.Name, @m.Studiengang.ToString()</li>
+    }
+</ul>
+

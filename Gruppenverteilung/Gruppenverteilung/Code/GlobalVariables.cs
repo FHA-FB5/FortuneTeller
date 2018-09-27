@@ -20,6 +20,8 @@ namespace Gruppenverteilung.Code
         public static Group CurrentSelectedGroupInGroupEditView = new Group();
 
 
+        public static Group CurrentBeamerViewgroup = new Group();
+
         public static Group CurrentSelectedGroupInEditGroupViewAssignView = new Group();
         public static List<Tutor> ToAssignTutors_ForAssignView = new List<Tutor>();
         public static List<Member> CurrentSelectedGroupInEditGroupView_MemberList = new List<Member>();

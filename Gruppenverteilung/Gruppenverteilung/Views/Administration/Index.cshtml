@@ -12,6 +12,7 @@
     <li><a data-toggle="tab" href="#assign" id="assign-tab">Tutoren zuweisen</a></li>
     <li><a data-toggle="tab" href="#edit" id="edit-tab">Bearbeite Grupppen</a></li>
     <li><a data-toggle="tab" href="#import" id="import-tab">JSON-Import</a></li>
+    <li><a data-toggle="tab" href="#beamer" id="beamer-tab">Beamer-Ansicht</a></li>
 </ul>
 
 <div class="tab-content">
@@ -32,6 +33,10 @@
     <div id="import" class="tab-pane fade">
         <h3>Import</h3>
         <partial name="_ImportView" model="new GroupCreationModel()" />
+    </div>
+    <div id="beamer" class="tab-pane fade">
+        <h3> Settings ??? </h3>
+        <a target="_new" class="btn btn-default" href="Administration/Beamer"> Beamer-Ansicht </a>
     </div>
 </div>
 
@@ -59,6 +64,20 @@
             $("#edit").html(res);
         });
         $("CurrentSelectedGroupInEditGroupView").val(gn);
+    }
+
+    jQuery('a[target^="_new"]').click(function () {
+        return openWindow(this.href);
+    });
+
+
+    function openWindow(url) {
+            var width = window.innerWidth * 0.66;
+            // define the height in
+            var height = width * window.innerHeight / window.innerWidth;
+            // Ratio the hight to the width as the user screen ratio
+            window.open(url, 'newwindow', 'width=' + width + ', height=' + height + ', top=' + ((window.innerHeight - height) / 2) + ', left=' + ((window.innerWidth - width) / 2));
+        return false;
     }
 </script>
 @section Scripts {

@@ -57,6 +57,57 @@ namespace Gruppenverteilung.Controllers
             return View("../Administration/AdminTestView");
         }
 
+        public IActionResult Beamer()
+        {
+            if (HttpContext.Session.GetString("LoggedIn") == null)
+            {
+                return View("LogInError");
+            }
+            //Set current view to first group in sorter
+            GlobalVariables.CurrentBeamerViewgroup = GlobalVariables.sorter.Groups[0];
+            return View("BeamerView");
+        }
+        public IActionResult BeamerNextGroup()
+        {
+            if (HttpContext.Session.GetString("LoggedIn") == null)
+            {
+                return View("LogInError");
+            }
+
+            //Set curretn view to next group in sorter
+            int index = 0;
+            for (; index < GlobalVariables.sorter.Groups.Count; index++)
+            {
+                if (GlobalVariables.sorter.Groups[index].Name == GlobalVariables.CurrentBeamerViewgroup.Name)
+                    break;
+            }
+
+            if(index < GlobalVariables.sorter.Groups.Count - 1)
+                GlobalVariables.CurrentBeamerViewgroup = GlobalVariables.sorter.Groups[index + 1];
+            return View("BeamerView");
+        }
+
+        public IActionResult BeamerPrevGroup()
+        {
+            if (HttpContext.Session.GetString("LoggedIn") == null)
+            {
+                return View("LogInError");
+            }
+
+            //Set curretn view to previous group in sorter
+            int index = 0;
+            for (; index < GlobalVariables.sorter.Groups.Count; index++)
+            {
+                if (GlobalVariables.sorter.Groups[index].Name == GlobalVariables.CurrentBeamerViewgroup.Name)
+                    break;
+            }
+
+            if(index > 0)
+                GlobalVariables.CurrentBeamerViewgroup = GlobalVariables.sorter.Groups[index - 1];
+
+            return View("BeamerView");
+        }
+
         [HttpPost]
         public IActionResult ShowGroups(AdministrationModel model)
         {

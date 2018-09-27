@@ -1,0 +1,37 @@
+﻿@using Gruppenverteilung.Code;
+@{
+    ViewData["Title"] = "BeamerView";
+    Layout = "~/Views/Shared/_BeamerLayout.cshtml";
+}
+
+<div class="row" style="margin-top:10%">
+    <div style="margin-top:40%" class="col-lg-2 col-md-2 col-sm-2">
+        <a href="/Administration/BeamerPrevGroup">
+            <i class="fas fa-angle-double-left fa-3x"></i>
+        </a>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4">
+        <label> @GlobalVariables.CurrentBeamerViewgroup.Name </label>
+        <ul class="list-group">
+            @foreach (Member member in GlobalVariables.CurrentBeamerViewgroup.MemberList)
+            {
+                <li class="list-group-item"> @member.Vorname, @member.Name </li>
+            }
+        </ul>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4">
+        <img class="img-thumbnail" src="https://www.zps-smile.de/wp-content/uploads/2016/10/orionthemes-placeholder-image.png" width="100%" />
+        <ul class="list-group">
+            @foreach (Tutor tutor in GlobalVariables.CurrentBeamerViewgroup.TutorList)
+            {
+                <li class="list-group-item"> @tutor.Name </li>
+            }
+        </ul>
+    </div>
+    <div style="margin-top:40%" class="col-lg-2 col-md-2 col-sm-2">
+        <a href="/Administration/BeamerNextGroup">
+            <i class="fas fa-angle-double-right fa-3x"></i>
+        </a>
+    </div>
+</div>

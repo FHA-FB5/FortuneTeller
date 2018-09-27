@@ -124,6 +124,37 @@ namespace Gruppenverteilung.Code
 
             return MemberFromDatabase;
         }
+
+        public string GetMembersGroupName(Member ersti)
+        {
+            string groupname = "";
+
+            Connection.Open();
+            using (SqlCommand command = new SqlCommand(String.Format(@"SELECT grp.[Name] FROM tbl_GroupMember AS grpmem
+                                                                    JOIN tbl_Group AS grp ON grpmem.GroupId = grp.GroupId
+                                                                    WHERE grpmem.MemberId = (SELECT MemberId FROM tbl_Member WHERE FirstName = '{0}' AND 
+																                                                                    LastName = '{1}' AND 
+																                                                                    Age = {2} AND 
+																                                                                    Course ='{3}' AND 
+																                                                                    Gender = '{4}');",
+                                                                                                                                    ersti.Vorname,
+                                                                                                                                    ersti.Name,
+                                                                                                                                    ersti.Age,
+                                                                                                                                    ersti.Studiengang.ToString(),
+                                                                                                                                    ersti.Geschlecht.ToString()), Connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        groupname = reader["Name"].ToString().Replace(" ", "");
+                    }
+                }
+            }              
+            Connection.Close();
+
+            return groupname;
+        }
         #endregion
 
         #region Insert...
@@ -208,5 +239,30 @@ namespace Gruppenverteilung.Code
         }
         #endregion
 
+        public bool MemberIsAlreadyInDatabase(Member ersti)
+        {
+            bool IsAlreadyInDarabase = false;
+
+            Connection.Open();
+            using (SqlCommand command = new SqlCommand(String.Format(@"SELECT * FROM [dbo].[tbl_Member] WHERE 
+								                                                        FirstName = '{0}' AND 
+								                                                        LastName = '{1}' AND
+								                                                        Age = {2} AND
+								                                                        Gender = '{3}' AND
+								                                                        Course = '{4}'; ", ersti.Vorname, ersti.Name, ersti.Age, ersti.Geschlecht.ToString(), ersti.Studiengang.ToString()), Connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        IsAlreadyInDarabase = true;
+                    }
+                }
+            }
+            Connection.Close();
+
+            return IsAlreadyInDarabase;
+        }
+       
     }
 }

@@ -8,7 +8,6 @@ using Gruppenverteilung.Models;
 using Gruppenverteilung.Code;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
-using Gruppenverteilung.Code;
 
 namespace Gruppenverteilung.Controllers
 {

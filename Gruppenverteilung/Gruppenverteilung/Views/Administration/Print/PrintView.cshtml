@@ -1,0 +1,54 @@
+﻿@model Gruppenverteilung.Models.PrintModel
+@using Gruppenverteilung.Code;
+
+@{
+    ViewData["Title"] = "PrintView";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div id="allgroups" style="display:none">
+            @for (int i = 0; i < Model.Groups.Count; i++)
+            {
+                <partial name="_SingleGroupView" model="new SingleGroupModel(Model.Groups[i])" />
+                <div style="page-break-before:always"></div>
+            }
+        </div>
+        <input class="btn btn-success" id="printdiv" type="submit" value="Alle Drucken" onclick="printContent('print_all')" />
+    </div>
+    <hr />
+    <div class="col-lg-4 col-md-4 col-sm-4">
+        @for (int i = 0; i < Model.Groups.Count; i++)
+        {
+            <div id="@Model.Groups[i].Name" style="display:none">
+                <partial name="_SingleGroupView" model="new SingleGroupModel(Model.Groups[i])" />
+            </div>
+            <div class="input-group">
+                <input disabled type="text" class="form-control" value="@Model.Groups[i].Name" />
+                <span class="input-group-btn">
+                    <button class="btn btn-default" id="printdiv" type="button" onclick="printContent('@Model.Groups[i].Name')"><i class="fas fa-print"></i></button>
+                </span>
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row">
+
+</div>
+
+<script>
+    function printContent(el) {
+        var restorepage = document.body.innerHTML;
+        var printcontent = "";
+        if (el !== "print_all") {
+            printcontent = document.getElementById(el).innerHTML;
+        }
+        else {
+            printcontent = document.getElementById('allgroups').innerHTML;
+        }
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+    }
+</script>

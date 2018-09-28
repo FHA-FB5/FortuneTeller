@@ -23,9 +23,10 @@ namespace Gruppenverteilung.Controllers
                 AdministrationLoginModel loginmodel = new AdministrationLoginModel();
                 return View("AdminLogInView", loginmodel);
             }
-            AdministrationModel model = new AdministrationModel();
-            model.CurrentSelectedGroup = model.groups[0];
-            return View(model);
+            GroupStatModel model = new GroupStatModel();
+            model.Groups = GlobalVariables.sorter.Groups;
+            model.Group = model.Groups[0];
+            return View("Stats/StatisticsView", model);
         }
         public IActionResult AdministrationView(AdministrationModel model)
         {
@@ -130,15 +131,15 @@ namespace Gruppenverteilung.Controllers
         }
 
         [HttpPost]
-        public IActionResult SimulateGroups(AdministrationModel model)
+        public IActionResult SimulateGroups(GroupStatModel model)
         {
             if (HttpContext.Session.GetString("LoggedIn") == null)
             {
                 return View("LogInError");
             }
             GlobalVariables.sorter.SimulateByFile("grpdata_01.txt");
-            model.groups = GlobalVariables.sorter.Groups;
-            return View("../Administration/Index", model);
+            model.Groups = GlobalVariables.sorter.Groups;
+            return View("Stats/StatisticsView", model);
         }
 
         [HttpPost]
@@ -187,9 +188,10 @@ namespace Gruppenverteilung.Controllers
         [HttpPost]
         public PartialViewResult AddTutorToGroup(string tutorname, AdministrationModel model)
         {
+
             GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.Add(GlobalVariables.ToAssignTutors_ForAssignView.FirstOrDefault(t => t.Name == tutorname));
             GlobalVariables.ToAssignTutors_ForAssignView.Remove(GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.FirstOrDefault(t => t.Name == tutorname));
-
+            //GlobalVariables.sorter.Groups.First(g => g.Name == GlobalVariables.CurrentSelectedGroupInTutorAssignView.Name).AddTutor(GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.FirstOrDefault(t => t.Name == tutorname));
             return PartialView("_ToAssignTutorListView", model);
         }
 
@@ -212,6 +214,55 @@ namespace Gruppenverteilung.Controllers
 
             return PartialView("../Administration/_GroupInfo", model);
         }
+
+        public IActionResult AssignTutor()
+        {
+            if (HttpContext.Session.GetString("LoggedIn") == null)
+            {
+                return View("LogInError");
+            }
+
+            AssignModel model = new AssignModel();
+            model.Groups = GlobalVariables.sorter.Groups;
+
+            return View("Assign/AssignView", model);
+        }
+
+        public IActionResult EditGroup()
+        {
+            if (HttpContext.Session.GetString("LoggedIn") == null)
+            {
+                return View("LogInError");
+            }
+
+            EditModel model = new EditModel();
+            model.Groups = GlobalVariables.sorter.Groups;
+            model.CurrentGroup = GlobalVariables.sorter.Groups[0];
+
+            return View("EditGroup/EditGroupView", model);
+        }
+
+        public IActionResult PrintGroups()
+        {
+            if (HttpContext.Session.GetString("LoggedIn") == null)
+            {
+                return View("LogInError");
+            }
+
+            PrintModel model = new PrintModel();
+            model.Groups = GlobalVariables.sorter.Groups;
+
+            return View("Print/PrintView", model);
+
+        }
+
+        public PartialViewResult ChangeEditGroupInfo(string groupname, EditModel model)
+        {
+            model.CurrentGroup = GlobalVariables.sorter.Groups.FirstOrDefault(group => group.Name == groupname);
+
+            return PartialView("EditGroup/_GroupInfo", model);
+        }
+
         #region "Old ADMINISTRATIONEDITVIEW"
 
         public IActionResult AddTutor(AdministrationModel model)
@@ -298,13 +349,16 @@ namespace Gruppenverteilung.Controllers
             return View("../Administration/AdministrationImportView", model);
         }
 
-        public PartialViewResult UpdateGroupProperties(string groupName, string groupRoom, AdministrationModel model)
-        {
+        public IActionResult UpdateGroupProperties(string groupName, string groupRoom, EditModel model)
+        { 
+            //TODO: Update geht immer wieder schief. FIX
             GlobalVariables.sorter.Groups.FirstOrDefault(x => x.Name == GlobalVariables.CurrentSelectedGroupInEditGroupViewAssignView.Name).Name = groupName;
-            model.RefreshGroups();
-            GlobalVariables.CurrentSelectedGroupInEditGroupViewAssignView = GlobalVariables.sorter.Groups.FirstOrDefault(x => x.Name == groupName);
+            GlobalVariables.sorter.Groups.FirstOrDefault(x => x.Name == GlobalVariables.CurrentSelectedGroupInEditGroupViewAssignView.Name).Room = groupRoom;
+            //model.RefreshGroups();
+            model.Groups = GlobalVariables.sorter.Groups;
+            model.CurrentGroup = model.Groups.FirstOrDefault(x => x.Name == groupName);
 
-            return PartialView("../Administration/_EditGroupView", model);
+            return View("../Administration/EditGroup/EditGroupView", model);
         }
         #endregion
     }

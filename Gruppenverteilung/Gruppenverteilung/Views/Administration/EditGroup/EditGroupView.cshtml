@@ -1,0 +1,51 @@
+﻿@model Gruppenverteilung.Models.EditModel
+@using Gruppenverteilung.Code
+@{
+    ViewData["Title"] = "EditGroupView";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form>
+    <div class="row">
+        <div class="form-group col-lg-6">
+            <select id="CurrentGroupSelector" class="col form-control">
+                @for (int i = 0; i < Model.Groups.Count; i++)
+                {
+                    <option value="@Model.Groups[i].Name">
+                        @Model.Groups[i].Name
+                    </option>
+                }
+            </select>
+        </div>
+    </div>
+    <div id="SaveMessage" class="alert alert-success" hidden>
+        @Model.SaveMassage
+    </div>
+    <div id="GroupInfos" class="row">
+        @Html.Partial("EditGroup/_GroupInfo");
+    </div>
+</form>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    //Change Tutorlist (as partial view) by changing the Group
+    $("#CurrentGroupSelector").change(function (event) {
+        //alert($(this).val());
+        //var url = "/Administration/CurrentSelectedGroupInEditViewUpdate";
+        var url = "/Administration/ChangeEditGroupInfo";
+        $.post(url, { groupname: $(this).val() }, function (res) {            
+            $("#GroupInfos").html(res);
+        });
+    });
+    
+    function updateGroupProperties() {
+        var url = "/Administration/UpdateGroupProperties";
+        var gn = $('#gnInput').val();
+        var gr = $('#grInput').val();
+        //updateCurrentGroupSelectItem();
+        $.post(url, { groupName: gn, groupRoom: gr }, function (res) {
+            //$("#SaveMassage").show();
+            //$("#GroupInfos").html(res);
+        });
+        //$("CurrentGroupSelector").val(gn);
+    }
+</script>

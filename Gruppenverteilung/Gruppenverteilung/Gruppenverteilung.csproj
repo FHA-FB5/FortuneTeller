@@ -15,6 +15,9 @@
     <Content Update="Views\Shared\_BeamerLayout.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
+    <Content Update="Views\Shared\_AdminLayout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
     <Content Update="Views\Shared\_publicLayout.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

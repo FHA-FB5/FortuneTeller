@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "AdministrationView";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 
@@ -55,10 +55,6 @@
         </ul>
     </div>*@
 
-<div class="row">
-
-
-</div>
 <script>
     function updateGroupProperties() {
         var url = "/Administration/UpdateGroupProperties";
@@ -71,19 +67,7 @@
         $("CurrentSelectedGroupInEditGroupView").val(gn);
     }
 
-    jQuery('a[target^="_new"]').click(function () {
-        return openWindow(this.href);
-    });
-
-
-    function openWindow(url) {
-            var width = window.innerWidth * 0.66;
-            // define the height in
-            var height = width * window.innerHeight / window.innerWidth;
-            // Ratio the hight to the width as the user screen ratio
-            window.open(url, 'newwindow', 'width=' + width + ', height=' + height + ', top=' + ((window.innerHeight - height) / 2) + ', left=' + ((window.innerWidth - width) / 2));
-        return false;
-    }
+    
 </script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

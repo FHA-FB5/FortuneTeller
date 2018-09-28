@@ -1,0 +1,102 @@
+﻿@model Gruppenverteilung.Models.AssignModel
+@using Gruppenverteilung.Code
+
+@{
+    ViewData["Title"] = "AssignView";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<form asp-controller="Administration" method="post" autocomplete="off">
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="form-group col-lg-6">
+                    <select id="CurrentSelectedGroup" class="col form-control">
+                        @for (int i = 0; i < Model.Groups.Count; i++)
+                        {
+                            <option value="@Model.Groups[i].Name"> @Model.Groups[i].Name </option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+                <input id="search" type="text" class="form-control input-lg" placeholder="Search" />
+                <span class="input-group-btn">
+                    <button class="btn btn-info btn-lg" type="button">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                </span>
+            </div>
+            <div id="ToAssignTutor_ListItems" class="form-group">
+                @Html.Partial("_ToAssignTutorListView", Model);
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div id="AssignedTutor_ListItems" class="form-group col-lg-6">
+                @Html.Partial("_AssignTutorListView", Model);
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    function RemoveTutor(name) {
+        var url = "/Administration/RemoveTutorFromGroup";
+        $.post(url, { TutorName: name }, function (res) {
+            $("#AssignedTutor_ListItems").html(res);
+            UpdateViews();
+        });
+    };
+    function AddTutor(name) {
+        var url = "/Administration/AddTutorToGroup";
+        $.post(url, { TutorName: name }, function (res) {
+            $("#ToAssignTutor_ListItems").html(res);
+            UpdateViews();
+        });
+    };
+
+    function UpdateViews() {
+        var url = "/Administration/UpdateAssignedTutorListView";
+        $.post(url, function (res) {
+            $("#AssignedTutor_ListItems").html(res);
+        });
+        url = "/Administration/UpdateToAssignTutorListView";
+        $.post(url, function (res) {
+            $("#ToAssignTutor_ListItems").html(res);
+        });
+    }
+
+    //Change Tutorlist (as partial view) by changing the Group
+    $("#CurrentSelectedGroup").change(function (event) {
+        //alert($(this).val());
+        var url = "/Administration/TutorUpdate";
+        $.post(url, { groupename: $(this).val() }, function (res) {
+            $("#AssignedTutor_ListItems").html(res);
+        });
+    });
+
+    $(function () {
+        $('#search').keyup(function () {
+            var current_query = $('#search').val();
+            if (current_query !== "") {
+                $(".for-search li").hide();
+                $(".for-search li").each(function () {
+                    var current_keyword = $(this).text();
+                    if (current_keyword.indexOf(current_query) >= 0) {
+                        $(this).show();
+                    };
+                });
+            } else {
+                $(".for-search li").show();
+            };
+        });
+    });
+</script>
+

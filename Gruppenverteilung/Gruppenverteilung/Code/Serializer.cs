@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Gruppenverteilung.Code
@@ -40,7 +41,7 @@ namespace Gruppenverteilung.Code
 
         private static string getStringFromJson(string path)
         {
-            return System.IO.File.ReadAllText(path);
+            return System.IO.File.ReadAllText(path, Encoding.UTF7);
         }
     }
 }

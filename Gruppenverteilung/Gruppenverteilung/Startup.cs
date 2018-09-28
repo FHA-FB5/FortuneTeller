@@ -43,7 +43,7 @@ namespace Gruppenverteilung
             {
                 //TODO ÄNDERN !!
                 // Set a short timeout for easy testing.
-                options.IdleTimeout = TimeSpan.FromSeconds(120);
+                options.IdleTimeout = TimeSpan.FromSeconds(120000000);
                 options.Cookie.HttpOnly = true;
             });
 

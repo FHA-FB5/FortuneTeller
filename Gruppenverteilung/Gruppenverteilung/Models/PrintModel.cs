@@ -9,5 +9,11 @@ namespace Gruppenverteilung.Models
     public class PrintModel
     {
         public List<Group> Groups { get; set; }
+        public AdministrationAllErstiesModel erstimodel { get; set; }
+
+        public PrintModel()
+        {
+            erstimodel = new AdministrationAllErstiesModel();
+        }
     }
 }

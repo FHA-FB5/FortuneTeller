@@ -1,0 +1,133 @@
+﻿@model AdministrationAllErstiesModel
+@using Gruppenverteilung.Code;
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Gesamtübersicht";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row" id="#gesamtStats">
+    <div class="col-lg-4">
+        <label>
+            Gesamt Stats:
+        </label>
+
+
+        <p>Anzahl: @Model.Members.Count<p>
+        <p>Durchschnittsalter: @Model.AverageAge</p>
+
+        <p> Männlich:</p>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(Model.GenderRates[0].Value * 100, 0).ToString()%">
+                @Math.Round(Model.GenderRates[0].Value * 100, 2).ToString()%
+            </div>
+        </div>
+
+        <p> Weiblich:</p>
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped" role="progressbar"
+                 aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(Model.GenderRates[1].Value * 100, 0).ToString()%">
+                @Math.Round(Model.GenderRates[1].Value * 100, 2).ToString()%
+            </div>
+        </div>
+
+        @*Kursraten Anzeigen*@
+        @foreach (KeyValuePair<Studiengang, double> kvp in Model.CourseRates)
+        {
+            <p>@kvp.Key:</p>
+
+            @if (kvp.Key.ToString() == "Informatik")
+            {
+                <div class="progress">
+                    <div class="progress-bar progress-bar-danger" role="progressbar"
+                         aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
+                        @Math.Round(kvp.Value * 100, 2).ToString()%
+                    </div>
+                </div>
+            }
+
+            @if (kvp.Key.ToString() == "MCD")
+            {
+                <div class="progress">
+                    <div class="progress-bar progress-bar-info" role="progressbar"
+                         aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
+                        @Math.Round(kvp.Value * 100, 2).ToString()%
+                    </div>
+                </div>
+            }
+
+            @if (kvp.Key.ToString() == "Wirtschaftsinformatik")
+            {
+                <div class="progress">
+                    <div class="progress-bar progress-bar-success" role="progressbar"
+                         aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
+                        @Math.Round(kvp.Value * 100, 2).ToString()%
+                    </div>
+                </div>
+            }
+
+            @if (kvp.Key.ToString() == "Elektrotechnik")
+            {
+                <div class="progress">
+                    <div class="progress-bar progress-bar-warning" role="progressbar"
+                         aria-valuemin="0" aria-valuemax="100" style="width:@Math.Round(kvp.Value * 100, 0).ToString()%">
+                        @Math.Round(kvp.Value * 100, 2).ToString()%
+                    </div>
+                </div>
+            }
+
+        }
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalAllErstis">
+    Ersti Liste
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="modalAllErstis" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Erstis</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group">
+                    @if (Model.Members.Count == 0)
+                    {
+                        <li class="list-group-item">Kein Ersti zugewiesen </li>
+                    }
+                    else
+                    {
+                        for (int i = 0; i < Model.Members.Count; i++)
+                        {
+                            <li class="list-group-item">  @Model.Members[i].Vorname, @Model.Members[i].Name </li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    function printContent(el) {
+        var restorepage = document.body.innerHTML;
+        var printcontent = "";
+        printcontent = document.getElementById(el).innerHTML;
+
+        document.body.innerHTML = printcontent;
+        window.print();
+        document.body.innerHTML = restorepage;
+    }
+</script>

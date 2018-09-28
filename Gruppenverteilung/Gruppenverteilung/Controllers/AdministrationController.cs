@@ -263,6 +263,19 @@ namespace Gruppenverteilung.Controllers
             return PartialView("EditGroup/_GroupInfo", model);
         }
 
+        public IActionResult Gesamt()
+        {
+            if (HttpContext.Session.GetString("LoggedIn") == null)
+            {
+                return View("LogInError");
+            }
+
+            AdministrationAllErstiesModel model = new AdministrationAllErstiesModel();
+
+            return View("_AdministrationAllErstiesView", model);
+
+        }
+
         #region "Old ADMINISTRATIONEDITVIEW"
 
         public IActionResult AddTutor(AdministrationModel model)

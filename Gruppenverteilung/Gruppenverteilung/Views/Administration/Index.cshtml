@@ -13,6 +13,7 @@
     <li><a data-toggle="tab" href="#edit" id="edit-tab">Bearbeite Grupppen</a></li>
     <li><a data-toggle="tab" href="#import" id="import-tab">JSON-Import</a></li>
     <li><a data-toggle="tab" href="#beamer" id="beamer-tab">Beamer-Ansicht</a></li>
+    <li><a data-toggle="tab" href="#print" id="print-tab">Gruppen Drucken</a></li>
 </ul>
 
 <div class="tab-content">
@@ -37,6 +38,10 @@
     <div id="beamer" class="tab-pane fade">
         <h3> Settings ??? </h3>
         <a target="_new" class="btn btn-default" href="Administration/Beamer"> Beamer-Ansicht </a>
+    </div>
+    <div id="print" class="tab-pane fade">
+        <h3>Gruppen Drucken</h3>
+        @Html.Partial("_PrintView", Model)
     </div>
 </div>
 

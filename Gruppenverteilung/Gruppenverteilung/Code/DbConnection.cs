@@ -263,6 +263,34 @@ namespace Gruppenverteilung.Code
 
             return IsAlreadyInDarabase;
         }
-       
+
+        public void SyncDBWithGroupSorterGroups(GroupSorter sorter)
+        {
+            foreach (Group group in sorter.Groups)
+            {
+                if (IsNewGroup(group.Name))
+                    InsertGroup(group.Name, group.Room);
+            }
+        }
+
+        public bool IsNewGroup(string groupname)
+        {
+            Connection.Open();
+            bool isnew = true;
+            using (SqlCommand command = new SqlCommand(String.Format(@"SELECT * FROM tbl_Group WHERE Name = '{0}'", groupname), Connection))
+            {
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    { 
+                        isnew = false;
+                    }
+                }
+            }
+
+            Connection.Close();
+
+            return isnew;
+        }
     }
 }

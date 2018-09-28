@@ -1,1 +1,111 @@
-{"Groups":[{"Name":"TestGruppe1","Room":"Keiner Zugewiesen"},{"Name":"TestGruppe2","Room":"Keiner Zugewiesen"},{"Name":"TestGruppe3","Room":"Keiner Zugewiesen"},{"Name":"TestGruppe4","Room":"Keiner Zugewiesen"},{"Name":"TestGruppe5","Room":"Keiner Zugewiesen"},{"Name":"TestGruppe6","Room":"Keiner Zugewiesen"}],"Tutors":[{"Name":"TestTutor1","Studiengang":1,"HasGroup":false},{"Name":"TestTutor2","Studiengang":1,"HasGroup":false},{"Name":"TestTutor3","Studiengang":1,"HasGroup":false},{"Name":"TestTutor4","Studiengang":1,"HasGroup":false},{"Name":"TestTutor5","Studiengang":1,"HasGroup":false}]}
+{
+  "Groups": [
+    {
+      "Name": "Die kuscheligen Koalas",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die originellen Opossums",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die waghalsigen Waschbären",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die peppigen Pinguine",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die risikofreudigen Rentiere",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die fluffigen Flamingos",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die keksförmigen Karpfen",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die dramatischen Dackel",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die oszillierenden Ozelots",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die zappelnden Zitteraale",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die schnellen Schildkröten",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die keken Känguruhs",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die netten Nasenbären",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die berümten Bonobos",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die tapferen Tucans",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die klugen Krokodile",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die wundervollen Walibys",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die kantigen Kaninchen",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die allwissenden Aale",
+      "Room": "N/A"
+    },
+    {
+      "Name": "Die erfahrenen Enten",
+      "Room": "N/A"
+    }
+  ],
+  "Tutors": [
+    {
+      "Name": "Dennis Koob",
+      "Studiengang": 1,
+      "HasGroup": false
+    },
+    {
+      "Name": "Max Conzen",
+      "Studiengang": 1,
+      "HasGroup": false
+    },
+    {
+      "Name": "Annika Latz",
+      "Studiengang": 1,
+      "HasGroup": false
+    },
+    {
+      "Name": "TestTutor1",
+      "Studiengang": 1,
+      "HasGroup": false
+    },
+    {
+      "Name": "TestTutor2",
+      "Studiengang": 1,
+      "HasGroup": false
+    }
+  ]
+}

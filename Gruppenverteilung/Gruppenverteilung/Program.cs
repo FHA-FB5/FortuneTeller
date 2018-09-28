@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Gruppenverteilung.Code;
 
 namespace Gruppenverteilung
 {
@@ -14,6 +15,9 @@ namespace Gruppenverteilung
     {
         public static void Main(string[] args)
         {
+            GlobalVariables.DatabaseConnection.SyncDBWithGroupSorterGroups(GlobalVariables.sorter);
+            GlobalVariables.CurrentSelectedGroupInTutorAssignView = GlobalVariables.sorter.Groups[0];
+            GlobalVariables.CurrentSelectedGroupInEditGroupViewAssignView = GlobalVariables.sorter.Groups[0];
             CreateWebHostBuilder(args).Build().Run();
         }
 

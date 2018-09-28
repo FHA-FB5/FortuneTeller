@@ -17,8 +17,7 @@ namespace Gruppenverteilung.Controllers
         {
             if (HttpContext.Session.GetString("LoggedIn") == null)
             { 
-                GlobalVariables.CurrentSelectedGroupInTutorAssignView = GlobalVariables.sorter.Groups[0];
-                GlobalVariables.CurrentSelectedGroupInEditGroupViewAssignView = GlobalVariables.sorter.Groups[0];
+                
                 //GlobalVariables.CurrentSelectedGroupInGroupEditView = GlobalVariables.sorter.Groups[0];
                 GlobalVariables.ToAssignTutors_ForAssignView = GlobalVariables.sorter.Tutors;
                 AdministrationLoginModel loginmodel = new AdministrationLoginModel();

@@ -106,7 +106,13 @@
 <script>
     function printContent(el) {
         var restorepage = document.body.innerHTML;
-        var printcontent = document.getElementById(el).innerHTML;
+        var printcontent = "";
+        if (el !== "print_all") {
+            printcontent = document.getElementById(el).innerHTML;
+        }
+        else {
+            printcontent = document.getElementById('allgroups').innerHTML;
+        }
         document.body.innerHTML = printcontent;
         window.print();
         document.body.innerHTML = restorepage;

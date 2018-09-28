@@ -28,7 +28,6 @@ namespace Gruppenverteilung.Models
                 GenderRates.Add(new KeyValuePair<Geschlecht, double>(geschlecht, 0.0));
             }
 
-            ////////////////
             foreach (Group g in GlobalVariables.sorter.Groups)
             {
                 foreach (Member m in g.MemberList)

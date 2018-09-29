@@ -27,14 +27,11 @@ namespace Gruppenverteilung.Controllers
             Member Ersti = new Member(model.Name, model.Vorname, model.Alter, model.Studiengang, model.Geschlecht);
 
             //If member already in Database => Get current group! ELSE find best group.
-            if (GlobalVariables.DatabaseConnection.MemberIsAlreadyInDatabase(Ersti))
+            string CurrentMemberGroupname = GlobalVariables.DatabaseConnection.GetMembersGroupName(Ersti);
+            
+            if (CurrentMemberGroupname == "")
             {
-                string CurrentMemberGroupname = GlobalVariables.DatabaseConnection.GetMembersGroupName(Ersti);
-                BestGroup = GlobalVariables.sorter.Groups.Find(group => group.Name == CurrentMemberGroupname);
-            }
-            else
-            {
-                GlobalVariables.DatabaseConnection.InsertMember(model.Name, model.Vorname, model.Alter, model.Geschlecht, model.Studiengang);
+                GlobalVariables.DatabaseConnection.InsertMember(model.Vorname, model.Name, model.Alter, model.Geschlecht, model.Studiengang);
                 BestGroup = GlobalVariables.sorter.FindBestGroup(Ersti);
                 GlobalVariables.DatabaseConnection.AssignMemberToGroup(GlobalVariables.DatabaseConnection.GetLastMemberID(), GlobalVariables.DatabaseConnection.GetGroupIDByName(BestGroup.Name));
 
@@ -57,7 +54,10 @@ namespace Gruppenverteilung.Controllers
                         ));
                 }
             }
-
+            else
+            {
+                BestGroup = GlobalVariables.sorter.Groups.Find(group => group.Name.Replace(" ", "") == CurrentMemberGroupname);
+            }
             dataOutputModel.GruppenName = BestGroup.Name;
 
             ///Rückgabe der view mit passendem Model.

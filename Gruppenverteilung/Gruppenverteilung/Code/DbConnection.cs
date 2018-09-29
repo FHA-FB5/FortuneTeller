@@ -130,13 +130,7 @@ namespace Gruppenverteilung.Code
             string groupname = "";
 
             Connection.Open();
-            using (SqlCommand command = new SqlCommand(String.Format(@"SELECT grp.[Name] FROM tbl_GroupMember AS grpmem
-                                                                    JOIN tbl_Group AS grp ON grpmem.GroupId = grp.GroupId
-                                                                    WHERE grpmem.MemberId = (SELECT MemberId FROM tbl_Member WHERE FirstName = '{0}' AND 
-																                                                                    LastName = '{1}' AND 
-																                                                                    Age = {2} AND 
-																                                                                    Course ='{3}' AND 
-																                                                                    Gender = '{4}');",
+            using (SqlCommand command = new SqlCommand(String.Format(@"SELECT grp.[Name] FROM tbl_GroupMember AS grpmem JOIN tbl_Group AS grp ON grpmem.GroupId = grp.GroupId WHERE grpmem.MemberId = (SELECT MemberId FROM tbl_Member WHERE FirstName = '{0}' AND LastName = '{1}' AND Age = {2} AND Course ='{3}' AND Gender = '{4}');",
                                                                                                                                     ersti.Vorname,
                                                                                                                                     ersti.Name,
                                                                                                                                     ersti.Age,
@@ -147,7 +141,7 @@ namespace Gruppenverteilung.Code
                 {
                     while (reader.Read())
                     {
-                        groupname = reader["Name"].ToString().Replace(" ", "");
+                        groupname = reader["Name"].ToString().Replace(" ","");
                     }
                 }
             }              

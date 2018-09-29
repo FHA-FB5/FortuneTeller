@@ -16,16 +16,20 @@ namespace Gruppenverteilung.Models
         [MaxLength(100)]
         public string Vorname { get; set; }
         [Required]
+        [EmailAddress]
+        public string Email { get; set; }
+        [Required]
         [Range(1,100)]
         public int Alter { get; set; }
         [Required]
         public Studiengang Studiengang { get; set; }
         [Required]
         public Geschlecht Geschlecht { get; set; }
+        public bool EmailIsDuplicate { get; set; } 
 
         public DataInputModel()
         {
-
+            EmailIsDuplicate = false;
         }
     }
 }

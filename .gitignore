@@ -333,3 +333,7 @@ Gruppenverteilung/Gruppenverteilung/obj/project.assets.json
 Gruppenverteilung/.vs/Gruppenverteilung/v15/Server/sqlite3/storage.ide-wal
 Gruppenverteilung/.vs/Gruppenverteilung/v15/Server/sqlite3/storage.ide-shm
 Gruppenverteilung/.vs/Gruppenverteilung/DesignTimeBuild/.dtbcache
+*.ide-wal
+*.ide-shm
+*.ide
+*.config

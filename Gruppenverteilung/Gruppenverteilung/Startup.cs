@@ -10,6 +10,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Gruppenverteilung.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Gruppenverteilung
 {
@@ -51,6 +53,9 @@ namespace Gruppenverteilung
             {
                 //options.Filters.Add(typeof(AuthorizationAttribute));
             }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var connection = @"Server=tcp:dkoob.database.windows.net,1433;Initial Catalog=StudentDistributorDb;Persist Security Info=False;User ID=Dkoob;Password=Schach100Wasserball;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            services.AddDbContext<StudentDistributorDbContext>(options => options.UseSqlServer(connection));
 
         }
 

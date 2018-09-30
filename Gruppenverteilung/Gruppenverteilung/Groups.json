@@ -1,111 +1,396 @@
-{
-  "Groups": [
+ï»¿{  
+   "Groups":[  
+      {  
+         "Name":"Die kuscheligen Koalas",
+         "TutorList":[  
+            {  
+               "Name":"Caro A.",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Torsten",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"D102"
+      },
+      {  
+         "Name":"Die originellen Opossums",
+         "TutorList":[  
+            {  
+               "Name":"Jana",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"AndrÃ©",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"D103"
+      },
+      {  
+         "Name":"Die waghalsigen WaschbÃ¤ren",
+         "TutorList":[  
+            {  
+               "Name":"Lukas",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Marc",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"G116"
+      },
+      {  
+         "Name":"Die peppigen Pinguine",
+         "TutorList":[  
+            {  
+               "Name":"Johannes",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Stumpf",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"E112"
+      },
+      {  
+         "Name":"Die risikofreudigen Rentiere",
+         "TutorList":[  
+            {  
+               "Name":"An-Phong",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Titus",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"E113"
+      },
+      {  
+         "Name":"Die fluffigen Flamingos",
+         "TutorList":[  
+            {  
+               "Name":"B.",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Alex",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"E114"
+      },
+      {  
+         "Name":"Die keksfÃ¶rmigen Karpfen",
+         "TutorList":[  
+            {  
+               "Name":"Caro T.",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Anne",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"E115"
+      },
+      {  
+         "Name":"Die dramatischen Dackel",
+         "TutorList":[  
+            {  
+               "Name":"Tino",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Eduard",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"G101"
+      },
+      {  
+         "Name":"Die oszillierenden Ozelots",
+         "TutorList":[  
+            {  
+               "Name":"Karla",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Adel",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"G102"
+      },
+      {  
+         "Name":"Die zappelnden Zitteraale",
+         "TutorList":[  
+            {  
+               "Name":"Marc 2",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Bayer",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"G107"
+      },
     {
-      "Name": "Die kuscheligen Koalas",
-      "Room": "N/A"
+      "Name": "Die schnellen SchildkrÃ¶ten",
+      "TutorList": [
+        {
+          "Name": "Felix",
+          "Studiengang": 1,
+          "HasGroup": false
+        },
+        {
+          "Name": "Ferdi",
+          "Studiengang": 1,
+          "HasGroup": false
+        }
+      ],
+      "Room": "G111"
     },
-    {
-      "Name": "Die originellen Opossums",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die waghalsigen Waschbären",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die peppigen Pinguine",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die risikofreudigen Rentiere",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die fluffigen Flamingos",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die keksförmigen Karpfen",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die dramatischen Dackel",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die oszillierenden Ozelots",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die zappelnden Zitteraale",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die schnellen Schildkröten",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die keken Känguruhs",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die netten Nasenbären",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die berümten Bonobos",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die tapferen Tucans",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die klugen Krokodile",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die wundervollen Walibys",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die kantigen Kaninchen",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die allwissenden Aale",
-      "Room": "N/A"
-    },
-    {
-      "Name": "Die erfahrenen Enten",
-      "Room": "N/A"
-    }
-  ],
-  "Tutors": [
-    {
-      "Name": "Dennis Koob",
-      "Studiengang": 1,
-      "HasGroup": false
-    },
-    {
-      "Name": "Max Conzen",
-      "Studiengang": 1,
-      "HasGroup": false
-    },
-    {
-      "Name": "Annika Latz",
-      "Studiengang": 1,
-      "HasGroup": false
-    },
-    {
-      "Name": "TestTutor1",
-      "Studiengang": 1,
-      "HasGroup": false
-    },
-    {
-      "Name": "TestTutor2",
-      "Studiengang": 1,
-      "HasGroup": false
-    }
-  ]
-}
+      {  
+         "Name":"Die keken KÃ¤nguruhs",
+         "TutorList":[  
+            {  
+               "Name":"Nico",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Angie",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"F214"
+      },
+      {  
+         "Name":"Die netten NasenbÃ¤ren",
+         "TutorList":[  
+            {  
+               "Name":"Artjom",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Knut",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"G115"
+      },
+      {  
+         "Name":"Die berÃ¼mten Bonobos",
+         "TutorList":[  
+            {  
+               "Name":"Leif",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Sepp",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"D101"
+      },
+      {  
+         "Name":"Die tapferen Tucans",
+         "TutorList":[  
+            {  
+               "Name":"Paul",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Frederike",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"G115"
+      },
+      {  
+         "Name":"Die klugen Krokodile",
+         "TutorList":[  
+            {  
+               "Name":"Sina",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"NoÃ«mi",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"D102"
+      },
+      {  
+         "Name":"Die wundervollen Walibys",
+         "TutorList":[  
+            {  
+               "Name":"Laurent",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Michi",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"D103"
+      },
+      {  
+         "Name":"Die kantigen Kaninchen",
+         "TutorList":[  
+            {  
+               "Name":"Daniel",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Lando",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"E112"
+      },
+      {  
+         "Name":"Die allwissenden Aale",
+         "TutorList":[  
+            {  
+               "Name":"Frank",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Jacques",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"E113"
+      },
+      {  
+         "Name":"Die erfahrenen Enten",
+         "TutorList":[  
+            {  
+               "Name":"Clemens",
+               "Studiengang":1,
+               "HasGroup":false
+            },
+            {  
+               "Name":"Felix",
+               "Studiengang":1,
+               "HasGroup":false
+            }
+         ],
+         "Room":"E114"
+      }
+   ],
+   "Tutors":[  
+      {  
+         "Name":"Tobi A.",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Nora",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Ian",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Natalie",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Martina",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Max",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Patrick",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Lucas",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Dayer",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Dennis",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Fee",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Malcolm",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"Ilir",
+         "Studiengang":1,
+         "HasGroup":false
+      },
+      {  
+         "Name":"A.C.",
+         "Studiengang":1,
+         "HasGroup":false
+      }
+   ]
+} 

@@ -11,3 +11,10 @@ function AddGroup() {
         $("#stats-tab").tab("show");
     });
 };
+
+function RemoveMember(name) {
+    var url = "/Administration/RemoveMember";
+    $.post(url, { memberName: name }, function (res) {
+        $("#GroupInfos").html(res);
+    })
+}

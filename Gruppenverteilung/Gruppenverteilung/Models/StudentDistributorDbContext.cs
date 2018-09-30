@@ -58,7 +58,7 @@ namespace Gruppenverteilung.Models
 
                 entity.Property(e => e.Course)
                     .IsRequired()
-                    .HasMaxLength(10);
+                    .HasMaxLength(50);
 
                 entity.Property(e => e.FirstName)
                     .IsRequired()

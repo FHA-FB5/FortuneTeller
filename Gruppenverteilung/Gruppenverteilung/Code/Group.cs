@@ -13,7 +13,6 @@ namespace Gruppenverteilung.Code
         public string Name { get; set; }
         [JsonIgnore]
         public List<Member> MemberList { get; set; }
-        [JsonIgnore]
         public List<Tutor> TutorList { get; set; }
         [JsonIgnore]
         public IEnumerable<SelectListItem> TutorSelectList { get; set; }

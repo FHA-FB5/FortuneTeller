@@ -286,5 +286,8 @@ namespace Gruppenverteilung.Code
 
             return isnew;
         }
+
+        //TODO: MEMBER LÖSCHEN per MAIL aus tblMember und tblMemberGroups
+
     }
 }

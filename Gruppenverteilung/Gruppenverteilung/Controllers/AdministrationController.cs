@@ -276,6 +276,22 @@ namespace Gruppenverteilung.Controllers
 
         }
 
+        public PartialViewResult RemoveMember(string memberName)
+        {
+            Group groupofmember
+            foreach(Group group in GlobalVariables.sorter.Groups)
+            {
+                Member member = group.MemberList.FirstOrDefault(m => m.Name == memberName);
+                if (member != null)
+                {
+                    groupofmember = group;
+
+                }
+            }
+
+            return PartialView("../Administration/EditGroup/_GroupInfo");
+        }
+
         #region "Old ADMINISTRATIONEDITVIEW"
 
         public IActionResult AddTutor(AdministrationModel model)

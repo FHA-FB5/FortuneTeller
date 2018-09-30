@@ -57,13 +57,17 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <select asp-for="Geschlecht" asp-items="Html.GetEnumSelectList<Geschlecht>()" class="form-control"></select>
+                                    <select asp-for="Geschlecht" asp-items="Html.GetEnumSelectList<Geschlecht>()" class="form-control" >
+                                        <option value="" disabled selected>Bitte wählen</option>
+                                    </select>
                                     <label>Geschlecht</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <select asp-for="Studiengang" asp-items="Html.GetEnumSelectList<Studiengang>()" class="form-control"></select>
+                                    <select asp-for="Studiengang" asp-items="Html.GetEnumSelectList<Studiengang>()" class="form-control">
+                                        <option value="" disabled selected>Bitte wählen</option>
+                                    </select>
                                     <label>Studiengang</label>
                                 </div>
                             </div>
@@ -98,7 +102,7 @@
             <div class="row">
                 <div class="input-field col s12 m6">
                     <input asp-for="Email" name="email" id="email" class="validate" required type="email">
-                    <label for="email">Email</label>
+                    <label for="Email">Email</label>
                 </div>
             </div>
         </div>

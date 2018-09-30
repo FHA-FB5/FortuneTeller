@@ -14,10 +14,10 @@ namespace GruppenverteilerTests
         {
             // arrange
             Group TestGroup = new Group("TestGroup");
-            Member TMember_1 = new Member("Test1", 25, Studiengang.Informatik, Geschlecht.Maennlich);
-            Member TMember_2 = new Member("Test2", 25, Studiengang.Wirtschaftsinformatik, Geschlecht.Maennlich);
-            Member TMember_3 = new Member("Test2", 25, Studiengang.Elektrotechnik, Geschlecht.Maennlich);
-            Member TMember_4 = new Member("Test4", 25, Studiengang.MCD, Geschlecht.Maennlich);
+            Member TMember_1 = new Member("Test1", 25, Studiengang.Informatik, Geschlecht.Männlich);
+            Member TMember_2 = new Member("Test2", 25, Studiengang.Wirtschaftsinformatik, Geschlecht.Männlich);
+            Member TMember_3 = new Member("Test2", 25, Studiengang.Elektrotechnik, Geschlecht.Männlich);
+            Member TMember_4 = new Member("Test4", 25, Studiengang.MCD, Geschlecht.Männlich);
             List<Member> member = new List<Member>();
             member.Add(TMember_1);
             member.Add(TMember_2);
@@ -50,7 +50,7 @@ namespace GruppenverteilerTests
             // arrange
             Group TestGroup = new Group("TestGroup");
             Member TMember_1 = new Member("Test1", 25, Studiengang.Informatik, Geschlecht.Weiblich);
-            Member TMember_2 = new Member("Test2", 25, Studiengang.Wirtschaftsinformatik, Geschlecht.Maennlich);
+            Member TMember_2 = new Member("Test2", 25, Studiengang.Wirtschaftsinformatik, Geschlecht.Männlich);
             Member TMember_3 = new Member("Test2", 25, Studiengang.Elektrotechnik, Geschlecht.Weiblich);
             Member TMember_4 = new Member("Test4", 25, Studiengang.MCD, Geschlecht.Weiblich);
             Member TMember_5 = new Member("Test5", 25, Studiengang.Informatik, Geschlecht.Weiblich);
@@ -67,7 +67,7 @@ namespace GruppenverteilerTests
             TestGroup.UpdateGenderRates();
 
             //assert
-            KeyValuePair<Geschlecht, double> pair = TestGroup.GenderRates.Find(kvp => kvp.Key == Geschlecht.Maennlich);
+            KeyValuePair<Geschlecht, double> pair = TestGroup.GenderRates.Find(kvp => kvp.Key == Geschlecht.Männlich);
             double mrate = pair.Value;
             pair = TestGroup.GenderRates.Find(kvp => kvp.Key == Geschlecht.Weiblich);
             double wrate = pair.Value;
@@ -87,10 +87,10 @@ namespace GruppenverteilerTests
             groups.Add(new Group("grp4"));
             groups.Add(new Group("grp5"));
 
-            Member InfMember = new Member("Test1", 25, Studiengang.Informatik, Geschlecht.Maennlich);
-            Member WinfMember = new Member("Test2", 25, Studiengang.Wirtschaftsinformatik, Geschlecht.Maennlich);
-            Member EtechMember = new Member("Test3", 25, Studiengang.Elektrotechnik, Geschlecht.Maennlich);
-            Member MCDMember = new Member("Test4", 25, Studiengang.MCD, Geschlecht.Maennlich);
+            Member InfMember = new Member("Test1", 25, Studiengang.Informatik, Geschlecht.Männlich);
+            Member WinfMember = new Member("Test2", 25, Studiengang.Wirtschaftsinformatik, Geschlecht.Männlich);
+            Member EtechMember = new Member("Test3", 25, Studiengang.Elektrotechnik, Geschlecht.Männlich);
+            Member MCDMember = new Member("Test4", 25, Studiengang.MCD, Geschlecht.Männlich);
 
             Gruppenverteilung.Code.GroupSorter sorter = new Gruppenverteilung.Code.GroupSorter();
             sorter.Groups = groups;

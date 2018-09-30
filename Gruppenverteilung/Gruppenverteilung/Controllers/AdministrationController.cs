@@ -182,6 +182,8 @@ namespace Gruppenverteilung.Controllers
             GlobalVariables.ToAssignTutors_ForAssignView.Add(GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.FirstOrDefault(t => t.Name == tutorname));
             GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.Remove(GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.FirstOrDefault(t => t.Name == tutorname));
 
+            Serializer.SaveGroupSorter();
+
             return PartialView("_AssignTutorListView", model);
         }
 
@@ -191,7 +193,9 @@ namespace Gruppenverteilung.Controllers
 
             GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.Add(GlobalVariables.ToAssignTutors_ForAssignView.FirstOrDefault(t => t.Name == tutorname));
             GlobalVariables.ToAssignTutors_ForAssignView.Remove(GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.FirstOrDefault(t => t.Name == tutorname));
-            //GlobalVariables.sorter.Groups.First(g => g.Name == GlobalVariables.CurrentSelectedGroupInTutorAssignView.Name).AddTutor(GlobalVariables.CurrentSelectedGroupInTutorAssignView.TutorList.FirstOrDefault(t => t.Name == tutorname));
+
+            Serializer.SaveGroupSorter();
+
             return PartialView("_ToAssignTutorListView", model);
         }
 
@@ -274,6 +278,37 @@ namespace Gruppenverteilung.Controllers
 
             return View("_AdministrationAllErstiesView", model);
 
+        }
+
+        public PartialViewResult RemoveMember(string memberName)
+        {
+            //TODO: In Sorter remove einbauen
+            Group groupofmember = null;
+            Member member = null;
+            foreach(Group group in GlobalVariables.sorter.Groups)
+            {
+                member = group.MemberList.FirstOrDefault(m => m.Name == memberName);
+                if (member != null)
+                {
+                    groupofmember = group;
+                    break;
+                }
+            }
+
+            if (groupofmember != null && member != null)
+            {
+                groupofmember.MemberList.Remove(member);
+            }
+
+            EditModel model = new EditModel();
+
+            
+            groupofmember.UpdateCourseRates();
+            groupofmember.UpdateGenderRates();
+
+            model.Groups = GlobalVariables.sorter.Groups;
+            model.CurrentGroup = groupofmember;
+            return PartialView("../Administration/EditGroup/_GroupInfo", model);
         }
 
         #region "Old ADMINISTRATIONEDITVIEW"

@@ -43,7 +43,7 @@ namespace Gruppenverteilung.Code
 
                 foreach (Group group in Groups)
                 {
-                    averge += group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Maennlich).Value;
+                    averge += group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Männlich).Value;
                 }
 
                 return averge / Groups.Count;
@@ -249,8 +249,8 @@ namespace Gruppenverteilung.Code
             foreach (Group group in grouplist)
             {
                 //Searching for the right Rates
-                GroupGenderRate = (gender == Geschlecht.Maennlich) ? group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Maennlich).Value : group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Weiblich).Value;
-                AverageGenderRate = (gender == Geschlecht.Maennlich) ? AverageMaleRate : AverageFemaleRate;
+                GroupGenderRate = (gender == Geschlecht.Männlich) ? group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Männlich).Value : group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Weiblich).Value;
+                AverageGenderRate = (gender == Geschlecht.Männlich) ? AverageMaleRate : AverageFemaleRate;
 
                 //If Groups Genderrate is lesser than the AverageCount, add to filterd Groups
                 if (GroupGenderRate <= AverageGenderRate)
@@ -340,9 +340,9 @@ namespace Gruppenverteilung.Code
                 else if (splittedLine[3] == "etech")
                     stdgang = Studiengang.Elektrotechnik;
 
-                Geschlecht gender = Geschlecht.Maennlich;
+                Geschlecht gender = Geschlecht.Männlich;
                 if (splittedLine[2] == "m")
-                    gender = Geschlecht.Maennlich;
+                    gender = Geschlecht.Männlich;
                 else if (splittedLine[2] == "w")
                     gender = Geschlecht.Weiblich;
 
@@ -359,7 +359,7 @@ namespace Gruppenverteilung.Code
                         group.Name,
                         group.MemberList.Count,
                         group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Weiblich).Value * 100,
-                        group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Maennlich).Value * 100,
+                        group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Männlich).Value * 100,
                         group.CourseRates.FirstOrDefault(kvp => kvp.Key == Studiengang.MCD).Value * 100,
                         group.CourseRates.FirstOrDefault(kvp => kvp.Key == Studiengang.Informatik).Value * 100,
                         group.CourseRates.FirstOrDefault(kvp => kvp.Key == Studiengang.Wirtschaftsinformatik).Value * 100,

@@ -21,7 +21,7 @@ namespace Gruppenverteilung.Code
             return group;
         }
 
-        public static string SerializeGroupSorter()
+        private static string SerializeGroupSorter()
         {
             string sorterJson = JsonConvert.SerializeObject(GlobalVariables.sorter);
             return sorterJson;
@@ -30,7 +30,7 @@ namespace Gruppenverteilung.Code
         public static void SaveGroupSorter()
         {
             string sorterJson = SerializeGroupSorter();
-            System.IO.File.WriteAllText("Groups.json",sorterJson);
+            System.IO.File.WriteAllText("Groups.json",sorterJson,Encoding.UTF8);
         }
 
         public static GroupSorter DeserializeGroupSorter(string pathFrom)
@@ -41,7 +41,7 @@ namespace Gruppenverteilung.Code
 
         private static string getStringFromJson(string path)
         {
-            return System.IO.File.ReadAllText(path, Encoding.UTF7);
+            return System.IO.File.ReadAllText(path, Encoding.UTF8);
         }
     }
 }

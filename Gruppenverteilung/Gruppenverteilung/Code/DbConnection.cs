@@ -90,9 +90,9 @@ namespace Gruppenverteilung.Code
                     {
                         //TODO: Auslagern
                         Geschlecht gender;
-                        if (reader["Gender"].ToString() == Geschlecht.Maennlich.ToString())
+                        if (reader["Gender"].ToString() == Geschlecht.Männlich.ToString())
                         {
-                            gender = Geschlecht.Maennlich;
+                            gender = Geschlecht.Männlich;
                         }
                         else
                         {
@@ -286,5 +286,8 @@ namespace Gruppenverteilung.Code
 
             return isnew;
         }
+
+        //TODO: MEMBER LÖSCHEN per MAIL aus tblMember und tblMemberGroups
+
     }
 }

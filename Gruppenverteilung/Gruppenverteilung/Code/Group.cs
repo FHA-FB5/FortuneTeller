@@ -143,7 +143,7 @@ namespace Gruppenverteilung.Code
             // Courses member count
             foreach (Member member in MemberList)
             {
-                if (member.Geschlecht == Geschlecht.Maennlich)
+                if (member.Geschlecht == Geschlecht.Männlich)
                     GenerCounts[0]++;
                 else if (member.Geschlecht == Geschlecht.Weiblich)
                     GenerCounts[1]++;
@@ -156,7 +156,7 @@ namespace Gruppenverteilung.Code
                 KeyValuePair<Geschlecht, double> pair = GenderRates[i];
 
                 KeyValuePair<Geschlecht, double> newPair = new KeyValuePair<Geschlecht, double>(pair.Key, GenerCounts[i] / (double)MemberList.Count);
-                KeyValuePair<Geschlecht, double> oldPair = GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Maennlich);
+                KeyValuePair<Geschlecht, double> oldPair = GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Männlich);
 
                 if (i == 1)
                     oldPair = GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Weiblich);
@@ -184,9 +184,9 @@ namespace Gruppenverteilung.Code
                 else if (splittedLine[3] == "etech")
                     stdgang = Studiengang.Elektrotechnik;
 
-                Geschlecht gender = Geschlecht.Maennlich;
+                Geschlecht gender = Geschlecht.Männlich;
                 if (splittedLine[2] == "m")
-                    gender = Geschlecht.Maennlich;
+                    gender = Geschlecht.Männlich;
                 else if (splittedLine[2] == "w")
                     gender = Geschlecht.Weiblich;
 

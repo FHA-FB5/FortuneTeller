@@ -8062,3 +8062,24 @@
 [30.09.2018, 01:12:08]: (Group State) -> GroupName: Die kantigen Kaninchen, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
 [30.09.2018, 01:12:08]: (Group State) -> GroupName: Die allwissenden Aale, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
 [30.09.2018, 01:12:08]: (Group State) -> GroupName: Die erfahrenen Enten, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Member Added) -> Conzen (22), MCD, Maennlich - in Group "Die kuscheligen Koalas"
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die kuscheligen Koalas, MemberCount: 1, Male: 0,00%, Female: 100,00%, MCD: 100,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die originellen Opossums, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die waghalsigen Waschbären, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die peppigen Pinguine, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die risikofreudigen Rentiere, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die fluffigen Flamingos, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die keksförmigen Karpfen, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die dramatischen Dackel, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die oszillierenden Ozelots, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die zappelnden Zitteraale, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die schnellen Schildkröten, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die keken Känguruhs, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die netten Nasenbären, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die berümten Bonobos, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die tapferen Tucans, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die klugen Krokodile, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die wundervollen Walibys, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die kantigen Kaninchen, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die allwissenden Aale, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 
+[30.09.2018, 11:24:12]: (Group State) -> GroupName: Die erfahrenen Enten, MemberCount: 0, Male: 0,00%, Female: 0,00%, MCD: 0,00%, INF: 0,00%, WINF: 0,00%, ETECH: 0,00% 

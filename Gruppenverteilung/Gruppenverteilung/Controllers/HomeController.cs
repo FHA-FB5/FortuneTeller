@@ -77,7 +77,7 @@ namespace Gruppenverteilung.Controllers
                     group.Name,
                     group.MemberList.Count,
                     group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Weiblich).Value * 100,
-                    group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Maennlich).Value * 100,
+                    group.GenderRates.FirstOrDefault(kvp => kvp.Key == Geschlecht.Männlich).Value * 100,
                     group.CourseRates.FirstOrDefault(kvp => kvp.Key == Studiengang.MCD).Value * 100,
                     group.CourseRates.FirstOrDefault(kvp => kvp.Key == Studiengang.Informatik).Value * 100,
                     group.CourseRates.FirstOrDefault(kvp => kvp.Key == Studiengang.Wirtschaftsinformatik).Value * 100,
@@ -96,13 +96,20 @@ namespace Gruppenverteilung.Controllers
         {
             DataOutputModel dataOutputModel = new DataOutputModel();
 
-            TblGroup Group;
+            TblGroup Group = null;
             //Get Group
             using (var context = new StudentDistributorDbContext())
             {
-                TblMember member = context.TblMember.Single(mem => mem.Email == model.Email);
-                TblGroupMember grpmember = context.TblGroupMember.SingleOrDefault(gm => gm.MemberId == member.MemberId);
-                Group = context.TblGroup.Single(grp => grp.GroupId == grpmember.GroupId);
+                TblMember member = context.TblMember.SingleOrDefault(mem => mem.Email == model.Email);
+                if(member != null)
+                {
+                    TblGroupMember grpmember = context.TblGroupMember.SingleOrDefault(gm => gm.MemberId == member.MemberId);
+                    Group = context.TblGroup.Single(grp => grp.GroupId == grpmember.GroupId);
+                }
+                else
+                {
+                    return View("../Home/Index", new DataInputModel());
+                }
             }
 
             dataOutputModel.GruppenName = Group.Name;

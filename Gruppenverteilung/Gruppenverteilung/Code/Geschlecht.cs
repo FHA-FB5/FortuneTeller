@@ -7,7 +7,7 @@ namespace Gruppenverteilung.Code
 {
     public enum Geschlecht
     {
-        Maennlich,
+        Männlich,
         Weiblich
     }
 }

@@ -1,0 +1,250 @@
+openapi: 3.0.1
+info:
+  title: FortuneTeller API specification
+  version: "1"
+servers:
+  - url: https://api.esa-fb5.ga/fortuneteller/v1
+  - url: https://staging.esa-fb5.ga/fortuneteller/v1
+paths:
+  /groups:
+    get:
+      summary: requesting all groups
+      description: returns all existing groups with their assigned IDs
+      operationId: getGroups
+      responses:
+        200:
+          description: successfully returned all groups
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Group'
+                type: array
+  /group/{id}:
+    get:
+      summary: requesting single groups
+      description: returns a complete group with an assigned ID
+      operationId: getGroup
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successfully returned a person
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        404:
+          $ref: '#/components/responses/notFound'
+    put:
+      summary: update a group
+      description:
+        updates the name of a group,
+        returns the updated group.
+        the ID will not change
+      operationId: updateGroup
+      requestBody:
+        $ref: '#/components/requestBodies/group'
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successfully updated group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        400:
+          $ref: '#/components/responses/badRequest'
+        404:
+          $ref: '#/components/responses/notFound'
+  /group:
+    post:
+      summary: creating a group
+      description:
+        create a new empty group with a given name,
+        returns a complete group with an asigned ID
+      operationId: createGroup
+      requestBody:
+        $ref: '#/components/requestBodies/group'
+      responses:
+        201:
+          description: successfully created group
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Group'
+        400:
+          $ref: '#/components/responses/badRequest'
+  /person/{id}:
+    get:
+      summary: requesting a person
+      operationId: getPerson
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: returns a person
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        404:
+          $ref: '#/components/responses/notFound'
+    put:
+      summary: update a person
+      operationId: updatePerson
+      requestBody:
+        $ref: '#/components/requestBodies/person'
+      parameters:
+        - $ref: '#/components/parameters/id'
+      responses:
+        200:
+          description: successfully updated person
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        400:
+          $ref: '#/components/responses/badRequest'
+        404:
+          $ref: '#/components/responses/notFound'
+  /person:
+    post:
+      summary: creating a person
+      operationId: createPerson
+      requestBody:
+        $ref: '#/components/requestBodies/person'
+      responses:
+        201:
+          description: successfully created person
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Person'
+        400:
+          $ref: '#/components/responses/badRequest'
+components:
+  responses:
+    notFound:
+      description: resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    badRequest:
+      description: invalid information provided
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  requestBodies:
+    group:
+      required: true
+      description: name of a group
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/GroupBody'
+    person:
+      required: true
+      description: a person
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PersonBody'
+  parameters:
+    id:
+      in: path
+      name: id
+      required: true
+      schema:
+        $ref: '#/components/schemas/uuid'
+      description: the unique identifier for the resource
+  schemas:
+    uuid:
+      format: "$[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}^"
+      type: string
+      description: a unique identifier, in UUID format
+      example: 00000000-0000-0000-0000-000000000000
+    Person:
+      description: a person in a group
+      properties:
+        id:
+          $ref: '#/components/schemas/uuid'
+        groupId:
+          $ref: '#/components/schemas/uuid'
+        surname:
+          description: surname of the person
+          type: string
+        name:
+          description: first name of the person
+          type: string
+        major:
+          $ref: '#/components/schemas/Major'
+        gender:
+          $ref: '#/components/schemas/Gender'
+        age:
+          description: age of the person, may not be negative
+          minimum: 0
+          type: integer
+      type: object
+    Group:
+      description: a group of people
+      properties:
+        id:
+          $ref: '#/components/schemas/uuid'
+        name:
+          description: the name of this group, may changed arbitrarily
+          type: string
+        members:
+          description: the members assigned to this group
+          items:
+            $ref: '#/components/schemas/Person'
+          type: array
+      type: object
+    Major:
+      description: the major of a person, can be one of inf, wi, mcd, et
+      enum:
+        - inf
+        - wi
+        - mcd
+        - et
+      type: string
+    Gender:
+      description: the gender of a person, can be one of male, female
+      enum:
+        - male
+        - female
+      type: string
+    Error:
+      description: a generic error, with information about the error reason
+      properties:
+        message:
+          type: string
+          description: reason for the error
+    PersonBody:
+      description: the body of a request for creating a person
+      type: object
+      properties:
+        surname:
+          description: surname of the person
+          type: string
+        name:
+          description: first name of the person
+          type: string
+        major:
+          $ref: '#/components/schemas/Major'
+        gender:
+          $ref: '#/components/schemas/Gender'
+        age:
+          description: age of the person, this may not be negative
+          minimum: 0
+          type: integer
+    GroupBody:
+      description: the body of a request for creating a group
+      type: object
+      properties:
+        name:
+          description: the name of the group
+          type: string

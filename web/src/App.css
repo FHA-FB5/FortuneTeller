@@ -1,0 +1,60 @@
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: var(--mint); 
+  min-height: 25vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-body {
+  background-color: var(--white); 
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  margin-bottom: -17.2vh;
+}
+
+.App-footer {
+  background-color: var(--black); 
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.card {
+  background: #e4e4e4;
+  background: linear-gradient(180deg, var(--light-grey), var(--white));
+  min-height: 60vh;
+  width: 90vw;
+  border-radius: 7.5px;
+  position: relative;
+  top: -20vh;
+}
+
+@media (min-width: 768px) {
+  .card {
+    max-width: 500px;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

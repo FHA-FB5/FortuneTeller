@@ -1,0 +1,16 @@
+.register-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+/*.register-name { 
+  padding-left: 5px;
+  min-width: 99%;
+  min-height: 5vh;
+  max-width: 99%;
+  max-height: 5vh;
+  border-radius: 5px;
+  background-color: var(--light-grey);
+  border-style: none;
+}*/

@@ -45,7 +45,7 @@ class App extends Component {
           </div> 
         </div>
         <footer className="App-footer">
-          <p>UI made with 💚 by Jan-Niklas</p>
+          <p>Build for students from students</p>
         </footer>
       </div>
     )

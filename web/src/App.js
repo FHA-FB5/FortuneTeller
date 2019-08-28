@@ -19,16 +19,13 @@ class App extends Component {
   
   handleUserData(data) {
     fetch("/group/"+data.groupId)
-      .then(response => response.json())
-      .then(res => {
-        if(res.message) {
-          alert("Unfortunately there was an error, please try again later.")
-        } else {
-          this.setState({
-            groupInfo: res
-          })
+      .then(response => {
+        if(response.status !== 200) {
+          throw "error"
         }
+        return response.json()
       })
+      .then(res => this.setState({ groupInfo: res }))
       .catch(error => alert("Unfortunately there was an error, please try again later."))
   }
   

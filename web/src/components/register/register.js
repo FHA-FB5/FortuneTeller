@@ -64,15 +64,13 @@ class Register extends Component {
           },
           body: JSON.stringify(this.state),
       })
-      .then(response => response.json())
-      .then(res => {
-        if(res.message) {
-          alert("Unfortunately there was an error, please try again later.")
-        } else {
-          this.props.onUserDate(res)
-        } 
-        
+      .then(response => {
+        if(response.status !== 200) {
+          throw "error"
+        }
+        return response.json()
       })
+      .then(res => this.props.onUserDate(res))
       .catch(error => alert("Unfortunately there was an error, please try again later."));
       
     }

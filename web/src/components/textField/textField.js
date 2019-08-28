@@ -6,14 +6,12 @@ class TextField extends Component {
   render() {
     let cn = "textfield-wrapper"
     
-    switch (this.props.valid) {
-      case true:
+    if(this.props.valid !== null) {
+      if (this.props.valid) {
         cn += " valid"
-        break;
-      case false:
+      } else {
         cn += " invalid"
-        break;
-      default:
+      }
     }
     
     return (

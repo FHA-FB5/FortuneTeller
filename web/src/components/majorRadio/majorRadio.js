@@ -6,14 +6,12 @@ class MajorRadio extends Component {
   render() {
     let cn = "majorRadio-wrapper"
     
-    switch (this.props.valid) {
-      case true:
+    if(this.props.valid !== null) {
+      if (this.props.valid) {
         cn += " valid"
-        break;
-      case false:
+      } else {
         cn += " invalid"
-        break;
-      default:
+      }
     }
     
     return (

@@ -1,24 +1,29 @@
 version: '3'
 
-volumes:
-  fortune_teller: {}
-
 networks:
-  nw:
+  backend:
     driver: bridge
 
 services:
   postgres:
     image: postgres
     volumes:
-      - fortune_teller:/var/lib/postgresql/data
+      - ./psql-data:/var/lib/postgresql/data
     networks:
-      - nw
-  fortune_teller:
-    build: .
+      - backend
+
+  api:
+    build:
+      context: .
     networks:
-      - nw
+      - backend
     ports:
-      - 5000:5000
+      - "127.0.0.1:8080:5000"
     depends_on:
       - postgres
+
+  web:
+    build:
+      context: ./web
+    ports:
+      - "127.0.0.1:5000:5000"

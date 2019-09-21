@@ -1,0 +1,17 @@
+
+.waves {
+  width: 100%;
+  height: 100%;
+}
+
+.parallax path {
+  animation-name: pan-right;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes pan-right {
+  to {
+    transform: translateX(100%);
+  }
+}

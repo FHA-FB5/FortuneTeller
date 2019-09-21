@@ -25,13 +25,18 @@ type GroupRepository interface {
 	List(ctx context.Context) ([]*model.Group, error)
 }
 
-type GroupService struct {
-	logger  logrus.FieldLogger
-	persons PersonLister
-	groups  GroupRepository
+type GroupAdder interface {
+	AddGroup(g *model.Group) error
 }
 
-func NewGroupService(lister PersonLister, groups GroupRepository, logger logrus.FieldLogger) (*GroupService, error) {
+type GroupService struct {
+	logger     logrus.FieldLogger
+	persons    PersonLister
+	groups     GroupRepository
+	groupAdder GroupAdder
+}
+
+func NewGroupService(lister PersonLister, groups GroupRepository, adder GroupAdder, logger logrus.FieldLogger) (*GroupService, error) {
 	if lister == nil || groups == nil {
 		return nil, ErrRepoNil
 	}
@@ -39,9 +44,10 @@ func NewGroupService(lister PersonLister, groups GroupRepository, logger logrus.
 		logger = logrus.StandardLogger()
 	}
 	return &GroupService{
-		logger:  logger.WithField("service", "group"),
-		persons: lister,
-		groups:  groups,
+		logger:     logger.WithField("service", "group"),
+		persons:    lister,
+		groups:     groups,
+		groupAdder: adder,
 	}, nil
 }
 
@@ -49,12 +55,14 @@ func (s GroupService) List(w http.ResponseWriter, r *http.Request) {
 	logger := s.logger.WithField("method", "list")
 	groups, err := s.groups.List(r.Context())
 	if err != nil {
+		logger.Error(err)
 		writeError(w, http.StatusInternalServerError, "could not get groups", logger)
 		return
 	}
 	for i, group := range groups {
 		members, err := s.persons.ListByGroup(r.Context(), group.ID)
 		if err != nil {
+			logger.Error(err)
 			writeError(w, http.StatusInternalServerError, "could not get groups", logger)
 			return
 		}
@@ -82,6 +90,7 @@ func (s GroupService) Get(w http.ResponseWriter, r *http.Request) {
 			writeError(w, http.StatusNotFound, fmt.Sprintf("group with id %s does not exist", id), logger)
 			return
 		}
+		logger.Error(err)
 		writeError(w, http.StatusInternalServerError, "could not get group", logger)
 		return
 	}
@@ -111,6 +120,7 @@ func (s GroupService) Update(w http.ResponseWriter, r *http.Request) {
 			writeError(w, http.StatusNotFound, fmt.Sprintf("group with id %s does not exist", id), logger)
 			return
 		}
+		logger.Error(err)
 		writeError(w, http.StatusInternalServerError, "could not update group", logger)
 		return
 	}
@@ -128,7 +138,14 @@ func (s GroupService) Create(w http.ResponseWriter, r *http.Request) {
 	}
 	out, err := s.groups.Create(r.Context(), in)
 	if err != nil {
+		logger.Error(err)
 		writeError(w, http.StatusInternalServerError, "could not create group", logger)
+		return
+	}
+	if err := s.groupAdder.AddGroup(out); err != nil {
+		logger.Error(err)
+		writeError(w, http.StatusInternalServerError, "could not create group", logger)
+		return
 	}
 	w.WriteHeader(http.StatusCreated)
 	if err := json.NewEncoder(w).Encode(out); err != nil {

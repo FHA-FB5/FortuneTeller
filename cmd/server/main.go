@@ -14,6 +14,7 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"github.com/FHA-FB5/FortuneTeller/pkg/api"
+	"github.com/FHA-FB5/FortuneTeller/pkg/assignment"
 	"github.com/FHA-FB5/FortuneTeller/pkg/database"
 	"github.com/FHA-FB5/FortuneTeller/pkg/migrations"
 )
@@ -58,15 +59,37 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	personService, err := api.NewPersonService(personRepo, logger)
+	groups, err := groupRepo.List(ctx)
+	if err != nil {
+		logger.Fatal(err)
+	}
+	for i, group := range groups {
+		if group == nil {
+			logger.Fatal("groups should not be nil")
+		}
+		persons, err := personRepo.ListByGroup(ctx, group.ID)
+		if err != nil {
+			log.Fatal(err)
+		}
+		groups[i].Members = persons
+	}
+	assigner := assignment.NewAssigner(groups)
+	personService, err := api.NewPersonService(personRepo, assigner, logger)
 	if err != nil {
 		log.Fatal(err)
 	}
-	groupService, err := api.NewGroupService(personRepo, groupRepo, logger)
+	groupService, err := api.NewGroupService(personRepo, groupRepo, assigner, logger)
 	if err != nil {
 		log.Fatal(err)
 	}
 	router := mux.NewRouter()
+	router.Use(func(h http.Handler) http.Handler {
+		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+			w.Header().Add("Access-Control-Allow-Origin", "*")
+			w.Header().Add("Content-Type", "application/json")
+			h.ServeHTTP(w, r)
+		})
+	})
 	router.HandleFunc("/groups", groupService.List).Methods(http.MethodGet)
 	router.HandleFunc("/group/{id}", groupService.Get).Methods(http.MethodGet)
 	router.HandleFunc("/group/{id}", groupService.Update).Methods(http.MethodPut)

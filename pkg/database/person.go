@@ -28,8 +28,9 @@ const (
 	`
 
 	createPerson = `
-		insert into persons(id, created_at, surname, name, major, gender, age) values (
+		insert into persons(id, group_id, created_at, surname, name, major, gender, age) values (
 			:id,
+			:group_id,
 		    now(),
 		    :surname,
 		    :name,

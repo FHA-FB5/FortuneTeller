@@ -11,7 +11,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/sirupsen/logrus"
 
-	"github.com/FHA-FB5/FortuneTeller/pkg/database"
+	db "github.com/FHA-FB5/FortuneTeller/pkg/database"
 	"github.com/FHA-FB5/FortuneTeller/pkg/model"
 )
 
@@ -29,12 +29,17 @@ type PersonRepository interface {
 	Create(ctx context.Context, person model.Person) (*model.Person, error)
 }
 
-type PersonService struct {
-	logger  logrus.FieldLogger
-	persons PersonRepository
+type Assigner interface {
+	Assign(person *model.Person) (string, error)
 }
 
-func NewPersonService(repo PersonRepository, logger logrus.FieldLogger) (*PersonService, error) {
+type PersonService struct {
+	logger   logrus.FieldLogger
+	persons  PersonRepository
+	assigner Assigner
+}
+
+func NewPersonService(repo PersonRepository, assigner Assigner, logger logrus.FieldLogger) (*PersonService, error) {
 	if repo == nil {
 		return nil, ErrRepoNil
 	}
@@ -42,8 +47,9 @@ func NewPersonService(repo PersonRepository, logger logrus.FieldLogger) (*Person
 		logger = logrus.StandardLogger()
 	}
 	return &PersonService{
-		logger:  logger.WithField("service", "person"),
-		persons: repo,
+		logger:   logger.WithField("service", "person"),
+		assigner: assigner,
+		persons:  repo,
 	}, nil
 }
 
@@ -64,6 +70,7 @@ func (s PersonService) Get(w http.ResponseWriter, r *http.Request) {
 			writeError(w, http.StatusNotFound, fmt.Sprintf("person with id %s does not exist", id), logger)
 			return
 		}
+		logger.Error(err)
 		writeError(w, http.StatusInternalServerError, "could not get person", logger)
 		return
 	}
@@ -89,14 +96,13 @@ func (s PersonService) Update(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if err := s.persons.Update(r.Context(), person); err != nil {
-		if err == database.ErrNotExists {
-			if err == database.ErrNotExists {
-				writeError(w, http.StatusNotFound, fmt.Sprintf("person with id %s does not exist", id), logger)
-				return
-			}
-			writeError(w, http.StatusInternalServerError, "could not update person", logger)
+		if err == db.ErrNotExists {
+			writeError(w, http.StatusNotFound, fmt.Sprintf("person with id %s does not exist", id), logger)
 			return
 		}
+		logger.Error(err)
+		writeError(w, http.StatusInternalServerError, "could not update person", logger)
+		return
 	}
 	if err := json.NewEncoder(w).Encode(person); err != nil {
 		logger.Error(err)
@@ -110,9 +116,18 @@ func (s PersonService) Create(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusBadRequest, "could not read request body", logger)
 		return
 	}
+	groupID, err := s.assigner.Assign(&in)
+	if err != nil {
+		logger.Error(err)
+		writeError(w, http.StatusInternalServerError, "could not assign person", logger)
+		return
+	}
+	in.GroupID = groupID
 	out, err := s.persons.Create(r.Context(), in)
 	if err != nil {
+		logger.Error(err)
 		writeError(w, http.StatusInternalServerError, "could not create person", logger)
+		return
 	}
 	w.WriteHeader(http.StatusCreated)
 	if err := json.NewEncoder(w).Encode(out); err != nil {

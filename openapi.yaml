@@ -212,10 +212,11 @@ components:
         - et
       type: string
     Gender:
-      description: the gender of a person, can be one of male, female
+      description: the gender of a person, can be one of male, female, unspecified
       enum:
-        - male
-        - female
+        - m
+        - f
+        - d
       type: string
     Error:
       description: a generic error, with information about the error reason

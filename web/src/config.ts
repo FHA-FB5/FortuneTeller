@@ -3,5 +3,6 @@ export let config = {
   sourceUrl: "https://github.com/FHA-FB5/FortuneTeller",
   projectName: "Fortune Teller",
   copyrightUrl: "https://fsr5.de",
-  copyrightOwner: "FH Aachen Fachbereich 5"
+  copyrightOwner: "FH Aachen Fachbereich 5",
+  copyrightOwnerShort: "FH Aachen FB 5"
 }

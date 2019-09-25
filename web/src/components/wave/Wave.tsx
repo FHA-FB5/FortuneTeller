@@ -29,7 +29,7 @@ class Wave<P extends WaveProps, S extends WaveState> extends React.Component<P, 
     let cTop = this.props.colorTop
     let cBottom = this.props.colorBottom
     if (this.props.rotate) {
-      state.style.transform = "rotateZ(180deg)"
+      state.style.transform = "rotateX(180deg) translate(0, -1px)"
       let tmp = cTop
       cTop = cBottom
       cBottom = tmp

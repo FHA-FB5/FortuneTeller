@@ -30,11 +30,11 @@ class App<T extends AppState> extends React.Component<{}, T> {
         <div className="row teal accent-4" style={{height: "20vh", margin: 0}}>
           <div className="col s12">
             <h1 className="show-on-large white-text center"
-                style={{display: "none", whiteSpace: "nowrap", fontFamily: "'Parisienne', cursive", fontSize: "5em"}}>
+                style={{display: "none", whiteSpace: "nowrap", fontFamily: "'Parisienne'", fontSize: "5em"}}>
               {config.projectName}
             </h1>
             <h1 className="show-on-medium-and-down white-text center"
-                style={{display: "none", whiteSpace: "nowrap", fontFamily: "'Parisienne', cursive", fontSize: "3em"}}>
+                style={{display: "none", whiteSpace: "nowrap", fontFamily: "'Parisienne'", fontSize: "3em"}}>
               Fortune Teller
             </h1>
           </div>

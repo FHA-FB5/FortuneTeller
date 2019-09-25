@@ -71,7 +71,7 @@ class App<T extends AppState> extends React.Component<{}, T> {
         <footer className="row page-footer teal accent-4" style={{height: "10vh", margin: 0}}>
           <div className="footer-copyright">
             <div className="container">
-              © 2019 <a href={config.copyrightUrl} className="grey-text text-lighten-2">{config.copyrightOwner}</a>
+              © 2019 <a href={config.copyrightUrl} className="grey-text text-lighten-2">{config.copyrightOwnerShort}</a>
               <div className="right">
                 <a href={config.sourceUrl} className="grey-text text-lighten-2">
                   <FontAwesomeIcon icon={faStar}/> me on <FontAwesomeIcon icon={faGithub}/>

@@ -94,6 +94,13 @@ func (s GroupService) Get(w http.ResponseWriter, r *http.Request) {
 		writeError(w, http.StatusInternalServerError, "could not get group", logger)
 		return
 	}
+	members, err := s.persons.ListByGroup(r.Context(), id)
+	if err != nil {
+		logger.Error(err)
+		writeError(w, http.StatusInternalServerError, "could not get members if group", logger)
+		return
+	}
+	group.Members = members
 	if err := json.NewEncoder(w).Encode(group); err != nil {
 		logger.Error(err)
 	}

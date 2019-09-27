@@ -1,0 +1,13 @@
+FROM golang AS builder
+
+COPY . /app
+WORKDIR /app
+RUN make build_overview
+
+
+FROM scratch
+
+COPY --from=builder /app/overview /app
+COPY templates /templates
+
+ENTRYPOINT ["/app", "-api", "http://api:5000"]

@@ -11,3 +11,6 @@ deps:
 
 build: deps pkg/migrations/migrations_gen.go
 	CGO_ENABLED=0 go build -o ${EXECUTABLE_NAME} ./cmd/server
+
+build_overview: deps
+	CGO_ENABLED=0 go build -o overview ./cmd/groups_overview

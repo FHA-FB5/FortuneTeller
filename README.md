@@ -20,7 +20,7 @@ the `docker-compose.yml`.
 
 ## Documentation
 
-The API documentation can be found at https://ftdocs.fsr5.ga/
+The API documentation can be found at https://docs.fsr5.de/
 
 ## Contributing
 

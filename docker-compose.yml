@@ -15,12 +15,22 @@ services:
   api:
     build:
       context: .
+      dockerfile: Dockerfile.api
     networks:
       - backend
     ports:
       - "127.0.0.1:8080:5000"
     depends_on:
       - postgres
+
+  group_overview:
+    build:
+      context: .
+      dockerfile: Dockerfile.overview
+    networks:
+      - backend
+    ports:
+      - "127.0.0.1:8090:8080"
 
   web:
     build:

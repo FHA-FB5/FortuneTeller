@@ -62,7 +62,7 @@ export class RegisterView<P extends RegisterViewProps, S extends RegisterViewSta
                          ["f", "Frau"]
                        ])}
                        onChange={value => this.setState({gender: value})}/>
-          <TextField name="Name" className="l4 s6"
+          <TextField name="Vorname" className="l4 s6"
                      onChange={value => this.setState({name: value})}/>
           <TextField name="Nachname" className="l5 s6"
                      onChange={value => this.setState({surname: value})}/>

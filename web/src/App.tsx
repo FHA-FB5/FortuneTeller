@@ -14,6 +14,7 @@ interface AppState {
   isRegistered: boolean
   registrationFailed: boolean
   groupName: string
+  personID: string
 }
 
 class App<T extends AppState> extends React.Component<{}, T> {
@@ -26,8 +27,8 @@ class App<T extends AppState> extends React.Component<{}, T> {
 
   render() {
     return (
-      <div className="App">
-        <div className="row teal accent-4" style={{height: "20vh", margin: 0}}>
+      <div className="App teal accent-4" style={{minHeight: "100vh"}}>
+        <div className="row teal accent-4" style={{height: "12em", margin: 0}}>
           <div className="col s12">
             <h1 className="show-on-large white-text center"
                 style={{display: "none", whiteSpace: "nowrap", fontFamily: "'Parisienne'", fontSize: "5em"}}>
@@ -39,13 +40,10 @@ class App<T extends AppState> extends React.Component<{}, T> {
             </h1>
           </div>
         </div>
-        <div className="row" style={{height: "5vw", margin: 0}}>
-          <Wave colorBottom="white" colorTop="#00bfa5" count={1} maxWaves={1} rotate={false}/>
-        </div>
         <div className="body white row valign-wrapper">
           {this.state.isRegistered
             ?
-            <GroupView groupName={this.state.groupName}/>
+            <GroupView groupName={this.state.groupName} personId={this.state.personID}/>
             :
             <RegisterView onFailure={() => this.setState({registrationFailed: true})} onSuccess={response => {
               fetch(config.apiUrl + "/group/" + response.groupId, {
@@ -60,15 +58,13 @@ class App<T extends AppState> extends React.Component<{}, T> {
                 this.setState({
                   isRegistered: true,
                   groupName: (group as Group).name,
+                  personID: response.id
                 })
               })
             }}/>
           }
         </div>
-        <div style={{height: "5vw", margin: 0}}>
-          <Wave colorBottom="#00bfa5" colorTop="white" count={1} maxWaves={1} rotate={true}/>
-        </div>
-        <footer className="row page-footer teal accent-4" style={{height: "10vh", margin: 0}}>
+        <footer className="row page-footer teal accent-4" style={{height: "3em", margin: 0}}>
           <div className="footer-copyright">
             <div className="container">
               © 2019 <a href={config.copyrightUrl} className="grey-text text-lighten-2">{config.copyrightOwnerShort}</a>

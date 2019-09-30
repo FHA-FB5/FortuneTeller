@@ -97,6 +97,7 @@ func main() {
 	router.HandleFunc("/person/{id}", personService.Get).Methods(http.MethodGet)
 	router.HandleFunc("/person/{id}", personService.Update).Methods(http.MethodPut)
 	router.HandleFunc("/person", personService.Create).Methods(http.MethodPost)
+	log.Infof("Listening on %s:%d", ipAddress, port)
 	if err := http.ListenAndServe(fmt.Sprintf("%s:%d", ipAddress, port), router); err != nil {
 		log.Error(err)
 	}

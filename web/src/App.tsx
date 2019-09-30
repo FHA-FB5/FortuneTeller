@@ -14,6 +14,7 @@ interface AppState {
   isRegistered: boolean
   registrationFailed: boolean
   groupName: string
+  personID: string
 }
 
 class App<T extends AppState> extends React.Component<{}, T> {
@@ -45,7 +46,7 @@ class App<T extends AppState> extends React.Component<{}, T> {
         <div className="body white row valign-wrapper">
           {this.state.isRegistered
             ?
-            <GroupView groupName={this.state.groupName}/>
+            <GroupView groupName={this.state.groupName} personId={this.state.personID}/>
             :
             <RegisterView onFailure={() => this.setState({registrationFailed: true})} onSuccess={response => {
               fetch(config.apiUrl + "/group/" + response.groupId, {
@@ -60,6 +61,7 @@ class App<T extends AppState> extends React.Component<{}, T> {
                 this.setState({
                   isRegistered: true,
                   groupName: (group as Group).name,
+                  personID: response.id
                 })
               })
             }}/>

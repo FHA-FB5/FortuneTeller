@@ -68,7 +68,7 @@ export class RegisterView<P extends RegisterViewProps, S extends RegisterViewSta
                      onChange={value => this.setState({surname: value})}/>
         </div>
         <div className="row">
-          <SelectField name={"Studiengang"} placeholder={"Waehle deinen Studiengang"} className="l6 s12"
+          <SelectField name={"Studiengang"} placeholder={"Wähle deinen Studiengang"} className="l6 s12"
                        options={new Map<string, string>([
                          ["ET", "Elektrotechnik"],
                          ["INF", "Informatik"],
@@ -88,14 +88,14 @@ export class RegisterView<P extends RegisterViewProps, S extends RegisterViewSta
               form.setState({age: years})
             },
             maxDate: new Date(2005, 11, 31),
-            defaultDate: new Date(2005, 11, 31),
+            defaultDate: new Date(2000, 1, 1),
             showDaysInNextAndPreviousMonths: true,
             i18n: {
               cancel: "Abbrechen",
               months: [
                 "Januar",
                 "Februar",
-                "Maerz",
+                "März",
                 "April",
                 "Mai",
                 "Juni",
@@ -106,11 +106,12 @@ export class RegisterView<P extends RegisterViewProps, S extends RegisterViewSta
                 "November",
                 "Dezember"
               ],
-              monthsShort: ["Jan", "Feb", "Mar", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+              monthsShort: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
               weekdaysShort: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
               weekdaysAbbrev: ["S", "M", "D", "M", "D", "F", "S"]
             },
-            format: "dd.mm.yyyy"
+            format: "dd.mm.yyyy",
+            yearRange: 50,
           }}/>
         </div>
         <div className="row">
